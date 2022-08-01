@@ -1,0 +1,10 @@
+{
+  "name": "@espoal/build",
+  "main": "index.mjs",
+  "packageManager": "yarn@4.0.0-rc.14",
+  "dependencies": {
+    "@libs/tailwind": "workspace:^",
+    "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.14",
+    "esbuild": "^0.14.51"
+  }
+}

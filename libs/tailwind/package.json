@@ -1,0 +1,12 @@
+{
+  "name": "@libs/tailwind",
+  "main": "index.mjs",
+  "packageManager": "yarn@4.0.0-rc.14",
+  "dependencies": {
+    "@tailwindcss/forms": "^0.5.2",
+    "autoprefixer": "^10.4.7",
+    "esbuild-sass-plugin": "^2.3.1",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.6"
+  }
+}
