@@ -14,6 +14,59 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@components/charts@workspace:^, @components/charts@workspace:libs/components/charts":
+  version: 0.0.0-use.local
+  resolution: "@components/charts@workspace:libs/components/charts"
+  dependencies:
+    "@vendors/charts": "workspace:^"
+    "@vendors/react": "workspace:^"
+  languageName: unknown
+  linkType: soft
+
+"@components/datePicker@workspace:^, @components/datePicker@workspace:libs/components/datePicker":
+  version: 0.0.0-use.local
+  resolution: "@components/datePicker@workspace:libs/components/datePicker"
+  dependencies:
+    "@vendors/misc": "workspace:^"
+    "@vendors/react": "workspace:^"
+  languageName: unknown
+  linkType: soft
+
+"@components/filterButton@workspace:^, @components/filterButton@workspace:libs/components/filterButton":
+  version: 0.0.0-use.local
+  resolution: "@components/filterButton@workspace:libs/components/filterButton"
+  dependencies:
+    "@components/transition": "workspace:^"
+    "@vendors/react": "workspace:^"
+  languageName: unknown
+  linkType: soft
+
+"@components/header@workspace:^, @components/header@workspace:libs/components/header":
+  version: 0.0.0-use.local
+  resolution: "@components/header@workspace:libs/components/header"
+  dependencies:
+    "@components/transition": "workspace:^"
+    "@libs/assets": "workspace:^"
+    "@vendors/react": "workspace:^"
+  languageName: unknown
+  linkType: soft
+
+"@components/sidebar@workspace:^, @components/sidebar@workspace:libs/components/sidebar":
+  version: 0.0.0-use.local
+  resolution: "@components/sidebar@workspace:libs/components/sidebar"
+  dependencies:
+    "@vendors/react": "workspace:^"
+  languageName: unknown
+  linkType: soft
+
+"@components/transition@workspace:^, @components/transition@workspace:libs/components/transition":
+  version: 0.0.0-use.local
+  resolution: "@components/transition@workspace:libs/components/transition"
+  dependencies:
+    "@vendors/react": "workspace:^"
+  languageName: unknown
+  linkType: soft
+
 "@espoal/build@workspace:^, @espoal/build@workspace:ext/build":
   version: 0.0.0-use.local
   resolution: "@espoal/build@workspace:ext/build"
@@ -30,6 +83,18 @@ __metadata:
   checksum: 3fadc40481a783ddb90397f5759f92650b57465f7a4a778056bd24b47060595012e9181a55ae547d57a893d37d9776abe9e368f1f6918e37225eb6a83f9a75f8
   languageName: node
   linkType: hard
+
+"@layouts/dashboard@workspace:^, @layouts/dashboard@workspace:libs/layouts/dashboard":
+  version: 0.0.0-use.local
+  resolution: "@layouts/dashboard@workspace:libs/layouts/dashboard"
+  dependencies:
+    "@components/datePicker": "workspace:^"
+    "@components/filterButton": "workspace:^"
+    "@components/header": "workspace:^"
+    "@components/sidebar": "workspace:^"
+    "@vendors/react": "workspace:^"
+  languageName: unknown
+  linkType: soft
 
 "@libs/assets@workspace:^, @libs/assets@workspace:libs/assets":
   version: 0.0.0-use.local
@@ -105,6 +170,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@pkgs/dash@workspace:^, @pkgs/dash@workspace:pkgs/dash":
+  version: 0.0.0-use.local
+  resolution: "@pkgs/dash@workspace:pkgs/dash"
+  dependencies:
+    "@components/charts": "workspace:^"
+    "@layouts/dashboard": "workspace:^"
+    "@libs/tailwind": "workspace:^"
+    "@vendors/react": "workspace:^"
+  languageName: unknown
+  linkType: soft
+
 "@tailwindcss/forms@npm:^0.5.2":
   version: 0.5.2
   resolution: "@tailwindcss/forms@npm:0.5.2"
@@ -123,7 +199,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vendors/misc@workspace:vendors/misc":
+"@vendors/charts@workspace:^, @vendors/charts@workspace:vendors/charts":
+  version: 0.0.0-use.local
+  resolution: "@vendors/charts@workspace:vendors/charts"
+  dependencies:
+    chart.js: "npm:^3.8.2"
+    chartjs-adapter-moment: "npm:^1.0.0"
+    moment: "npm:^2.29.4"
+  languageName: unknown
+  linkType: soft
+
+"@vendors/misc@workspace:^, @vendors/misc@workspace:vendors/misc":
   version: 0.0.0-use.local
   resolution: "@vendors/misc@workspace:vendors/misc"
   dependencies:
@@ -135,6 +221,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@vendors/react@workspace:vendors/react"
   dependencies:
+    prop-types: "npm:^15.8.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-router-dom: "npm:^6.3.0"
@@ -369,6 +456,23 @@ __metadata:
   version: 1.0.30001373
   resolution: "caniuse-lite@npm:1.0.30001373"
   checksum: a08c182c0afc9f34f252f3ff4919a5a95f697f39ff1c636745659b788460e46564bf975cf81b39914c2bf86247ae95bd994648a638ee7ced1daf186f63dc852a
+  languageName: node
+  linkType: hard
+
+"chart.js@npm:^3.8.2":
+  version: 3.8.2
+  resolution: "chart.js@npm:3.8.2"
+  checksum: e2989d96e0e9fd75563236a6557a2a3f0bd8e59a678ffadc753e07b199a30c5ccd626fccb997d769d175ad54692eece4e5887cc24ee9d5a80899a480eee8fe0a
+  languageName: node
+  linkType: hard
+
+"chartjs-adapter-moment@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "chartjs-adapter-moment@npm:1.0.0"
+  peerDependencies:
+    chart.js: ^3.0.0
+    moment: ^2.10.2
+  checksum: 6814e0a1e093a8add8580dc1e6689a6e8f992f8c0db68ea87e43c2ff90f553feb2c85461d4b01e598b1a01b017f25e6ecc8bcbc02c314c55dc79d7987e1f1b63
   languageName: node
   linkType: hard
 
@@ -1179,6 +1283,7 @@ __metadata:
   resolution: "main@workspace:main"
   dependencies:
     "@pkgs/auth": "workspace:^"
+    "@pkgs/dash": "workspace:^"
     "@vendors/react": "workspace:^"
   languageName: unknown
   linkType: soft
@@ -1334,6 +1439,13 @@ __metadata:
   bin:
     mkdirp: bin/cmd.js
   checksum: 123361119829ab8115234f36ed8ef8f697b0f6f83ec9f9bc8f76da587487976d74bc874ffa892e7a66df607fa8f2cc758eed8db225e9cd3a84846350209e53db
+  languageName: node
+  linkType: hard
+
+"moment@npm:^2.29.4":
+  version: 2.29.4
+  resolution: "moment@npm:2.29.4"
+  checksum: d275537a30f155cae7f53f6e6d164ccb59b560935f3c6ed0f4a2e6f3503063b491ffa6b4f7e7207501f6fcab92a2d0bb78ed539cde33cadcb91df6b254f7328d
   languageName: node
   linkType: hard
 
@@ -1604,7 +1716,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.6.2":
+"prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:

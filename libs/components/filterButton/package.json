@@ -1,0 +1,9 @@
+{
+  "name": "@components/filterButton",
+  "main": "FilterButton.mjs",
+  "packageManager": "yarn@4.0.0-rc.14",
+  "dependencies": {
+    "@components/transition": "workspace:^",
+    "@vendors/react": "workspace:^"
+  }
+}

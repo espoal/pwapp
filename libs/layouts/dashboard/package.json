@@ -1,0 +1,11 @@
+{
+  "name": "@layouts/dashboard",
+  "packageManager": "yarn@4.0.0-rc.14",
+  "dependencies": {
+    "@components/datePicker": "workspace:^",
+    "@components/filterButton": "workspace:^",
+    "@components/header": "workspace:^",
+    "@components/sidebar": "workspace:^",
+    "@vendors/react": "workspace:^"
+  }
+}

@@ -3,6 +3,7 @@ import {
   Routes, Route, useLocation
 } from '@vendors/react'
 import { AuthRoutes } from '@pkgs/auth/AuthRoutes.mjs'
+import { DashboardPage } from '@pkgs/dash/DashboardPage.mjs'
 
 export const App = () => {
 
@@ -18,6 +19,7 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<h1>Hello world</h1>} />
       <Route path="/auth/*" element={<AuthRoutes />}/>
+      <Route path="/dash" element={<DashboardPage />} />
       <Route path="*" element={<h1>Not Found</h1>} />
     </Routes>
   )

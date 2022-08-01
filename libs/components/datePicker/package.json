@@ -1,9 +1,9 @@
 {
-  "name": "main",
+  "name": "@components/datePicker",
+  "main": "DatePicker.mjs",
   "packageManager": "yarn@4.0.0-rc.14",
   "dependencies": {
-    "@pkgs/auth": "workspace:^",
-    "@pkgs/dash": "workspace:^",
+    "@vendors/misc": "workspace:^",
     "@vendors/react": "workspace:^"
   }
 }
