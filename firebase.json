@@ -15,11 +15,11 @@
     "rewrites": [
       {
         "source": "/dash",
-        "destination": "ssr/dash/index.html"
+        "destination": "/ssr/dash/index.html"
       },
       {
         "source": "/auth/login",
-        "destination": "ssr/auth/login/index.html"
+        "destination": "/ssr/auth/login/index.html"
       },
       {
         "source": "**",
