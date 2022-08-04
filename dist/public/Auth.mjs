@@ -1,14 +1,14 @@
-// pnp:/home/mamluk/Projects/pwa/pkgs/auth/Auth.mjs
+// pnp:/home/mamluk/Projects/pwapp/pkgs/auth/Auth.mjs
 import { React as React3, Routes, Route, Navigate } from "/vendors/react.mjs";
 
-// pnp:/home/mamluk/Projects/pwa/pkgs/auth/LoginPage.mjs
+// pnp:/home/mamluk/Projects/pwapp/pkgs/auth/LoginPage.mjs
 import { React, Link } from "/vendors/react.mjs";
 
-// pnp:/home/mamluk/Projects/pwa/libs/assets/index.mjs
+// pnp:/home/mamluk/Projects/pwapp/libs/assets/index.mjs
 var AuthImage = "/assets/images/auth-image.jpg";
 var AuthDecoration = "/assets/images/auth-decoration.png";
 
-// pnp:/home/mamluk/Projects/pwa/pkgs/auth/LoginPage.mjs
+// pnp:/home/mamluk/Projects/pwapp/pkgs/auth/LoginPage.mjs
 var LoginPage = () => {
   return /* @__PURE__ */ React.createElement("main", {
     className: "bg-white"
@@ -136,7 +136,7 @@ var LoginPage = () => {
   }))));
 };
 
-// pnp:/home/mamluk/Projects/pwa/pkgs/auth/SignupPage.mjs
+// pnp:/home/mamluk/Projects/pwapp/pkgs/auth/SignupPage.mjs
 import { React as React2, Link as Link2 } from "/vendors/react.mjs";
 var SignupPage = () => {
   return /* @__PURE__ */ React2.createElement("main", {
@@ -277,7 +277,7 @@ var SignupPage = () => {
   }))));
 };
 
-// pnp:/home/mamluk/Projects/pwa/pkgs/auth/Auth.mjs
+// pnp:/home/mamluk/Projects/pwapp/pkgs/auth/Auth.mjs
 var Auth = () => {
   return /* @__PURE__ */ React3.createElement(Routes, null, /* @__PURE__ */ React3.createElement(Route, {
     path: "login",

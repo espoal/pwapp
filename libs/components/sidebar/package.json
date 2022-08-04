@@ -1,0 +1,8 @@
+{
+  "name": "@components/sidebar",
+  "main": "Sidebar.mjs",
+  "packageManager": "yarn@4.0.0-rc.14",
+  "dependencies": {
+    "@vendors/react": "workspace:^"
+  }
+}

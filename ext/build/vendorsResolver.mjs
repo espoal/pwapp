@@ -1,5 +1,5 @@
 
-export const vendorsResolver = (currentVersion = '0.0.1') => ({
+export const vendorsResolver = ({currentVersion = '0.0.1', ssr = false}) => ({
   name: 'example',
   setup(build) {
     // Mark all paths starting with 'http://' or 'https://' as external
@@ -7,7 +7,8 @@ export const vendorsResolver = (currentVersion = '0.0.1') => ({
       const pkg = args.path.split('/').pop()
       // console.log({args, pkg})
       // return { path: `/vendors/${pkg}${currentVersion}.mjs`, external: true }
-      return { path: `/vendors/${pkg}.mjs`, external: true }
+      const path = `${ssr ? '.' : ''}/vendors/${pkg}.mjs`
+      return { path, external: true }
 
     })
     // Mark all paths starting with 'http://' or 'https://' as external

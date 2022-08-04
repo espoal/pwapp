@@ -3,7 +3,7 @@ import { React, Route } from '@vendors/react'
 
 const Auth = React.lazy(async () => {
 
-  const { Auth } = await import('/Auth.mjs')
+  const { Auth } = await import('./Auth.mjs')
 
   return { default: Auth }
 

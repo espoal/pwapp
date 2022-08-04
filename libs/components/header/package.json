@@ -1,0 +1,10 @@
+{
+  "name": "@components/header",
+  "main": "Header.mjs",
+  "packageManager": "yarn@4.0.0-rc.14",
+  "dependencies": {
+    "@components/transition": "workspace:^",
+    "@libs/assets": "workspace:^",
+    "@vendors/react": "workspace:^"
+  }
+}

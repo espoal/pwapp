@@ -1,5 +1,5 @@
 // Import base styles
-@import '~flatpickr/dist/flatpickr.min.css';
+@import './additional-styles/flatpickrLib.css';
 
 // Customise flatpickr
 $calendarPadding: 24px;
@@ -73,8 +73,8 @@ $daysWidth: $daySize*7;
     border: none;
 }
 
-.flatpickr-day, 
-.flatpickr-day.prevMonthDay, 
+.flatpickr-day,
+.flatpickr-day.prevMonthDay,
 .flatpickr-day.nextMonthDay,
 .flatpickr-day.selected.startRange,
 .flatpickr-day.startRange.startRange,
@@ -157,7 +157,7 @@ $daysWidth: $daySize*7;
 .flatpickr-months .flatpickr-next-month {
     position: static;
     height: auto;
-    @apply text-slate-600;    
+    @apply text-slate-600;
 }
 
 .flatpickr-months .flatpickr-prev-month svg,

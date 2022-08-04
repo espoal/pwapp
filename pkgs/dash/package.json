@@ -1,0 +1,11 @@
+{
+  "name": "@pkgs/dash",
+  "main": "DashboardPage.mjs",
+  "packageManager": "yarn@4.0.0-rc.14",
+  "dependencies": {
+    "@components/charts": "workspace:^",
+    "@layouts/dashboard": "workspace:^",
+    "@libs/tailwind": "workspace:^",
+    "@vendors/react": "workspace:^"
+  }
+}

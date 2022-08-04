@@ -1,4 +1,11 @@
 {
   "name": "dist",
-  "packageManager": "yarn@4.0.0-rc.14"
+  "packageManager": "yarn@4.0.0-rc.14",
+  "dependencies": {
+    "@vendors/charts": "workspace:^",
+    "@vendors/react": "workspace:^",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0"
+  }
 }

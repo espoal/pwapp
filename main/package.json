@@ -3,6 +3,7 @@
   "packageManager": "yarn@4.0.0-rc.14",
   "dependencies": {
     "@pkgs/auth": "workspace:^",
+    "@pkgs/dash": "workspace:^",
     "@vendors/react": "workspace:^"
   }
 }

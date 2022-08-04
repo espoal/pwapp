@@ -13,7 +13,7 @@ const loader = {
 const baseOptions = {
   entryPoints: [ 'No entrypoint specified' ],
   outdir: 'dist/public/',
-  plugins: [ vendorsResolver(), tailwindPlugin, pnpPlugin()],
+  plugins: [ vendorsResolver({}), tailwindPlugin, pnpPlugin()],
   bundle: true,
   splitting: false,
   format: 'esm',
@@ -26,15 +26,29 @@ const baseOptions = {
   outExtension: { '.js': '.mjs' },
 }
 
+const serverOptions = {
+  plugins: [ vendorsResolver({ ssr: true }), tailwindPlugin, pnpPlugin()],
+  platform: 'node'
+
+}
+
 export const buildHelper = async ({
   entryPoints,
   external,
-  outDir = ''
+  outDir = '',
+  ssr = false
 }) => {
-  await esbuild.build({
+
+  const options = {
     ...baseOptions,
     entryPoints,
     external,
     outdir: 'dist/public/' + outDir
-  })
+  }
+
+  if (ssr)
+    await esbuild.build({ ...options, ...serverOptions })
+  else
+    await esbuild.build(options)
+
 }
