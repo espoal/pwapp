@@ -1,22 +1,13 @@
 import { buildHelper } from '@espoal/build'
 
-
-buildHelper({
-  entryPoints: ['vendors/misc/resolvedConfig.mjs'],
-  outDir: 'vendors/'
-})
-
 // React
 
 buildHelper({
-  entryPoints: ['vendors/react/react.mjs'],
+  entryPoints: [
+    'vendors/react/react.mjs',
+    'vendors/react/server.mjs',
+  ],
   outDir: 'vendors/'
-})
-
-buildHelper({
-  entryPoints: ['vendors/react/server.mjs'],
-  outDir: 'vendors/',
-  // ssr: true
 })
 
 // Charts
@@ -26,22 +17,29 @@ buildHelper({
   outDir: 'vendors/'
 })
 
+// Misc
+
 buildHelper({
-  entryPoints: ['vendors/misc/misc.mjs'],
+  entryPoints: [
+    'vendors/misc/misc.mjs',
+    'vendors/misc/resolvedConfig.mjs'
+  ],
   outDir: 'vendors/'
 })
 
+// App
+
 buildHelper({
   entryPoints: ['main/index.mjs'],
-  external: ['@vendors/react']
 })
 
 buildHelper({
   entryPoints: ['pkgs/auth/Auth.mjs'],
-  external: ['@vendors/react']
 })
 
+// SSR
+
 buildHelper({
-  entryPoints: ['main/server.mjs'],
+  entryPoints: ['main/ssr.mjs'],
   ssr: true
 })

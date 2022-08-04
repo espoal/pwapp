@@ -2,7 +2,7 @@
 import { React as React3, Routes, Route, Navigate } from "/vendors/react.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/auth/LoginPage.mjs
-import { React, Link } from "/vendors/react.mjs";
+import { React, Link, Helmet } from "/vendors/react.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/libs/assets/index.mjs
 var AuthImage = "/assets/images/auth-image.jpg";
@@ -12,7 +12,7 @@ var AuthDecoration = "/assets/images/auth-decoration.png";
 var LoginPage = () => {
   return /* @__PURE__ */ React.createElement("main", {
     className: "bg-white"
-  }, /* @__PURE__ */ React.createElement("div", {
+  }, /* @__PURE__ */ React.createElement(Helmet, null, /* @__PURE__ */ React.createElement("title", null, " Login page ")), /* @__PURE__ */ React.createElement("div", {
     className: "relative md:flex"
   }, /* @__PURE__ */ React.createElement("div", {
     className: "md:w-1/2"
@@ -137,11 +137,11 @@ var LoginPage = () => {
 };
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/auth/SignupPage.mjs
-import { React as React2, Link as Link2 } from "/vendors/react.mjs";
+import { React as React2, Link as Link2, Helmet as Helmet2 } from "/vendors/react.mjs";
 var SignupPage = () => {
   return /* @__PURE__ */ React2.createElement("main", {
     className: "bg-white"
-  }, /* @__PURE__ */ React2.createElement("div", {
+  }, /* @__PURE__ */ React2.createElement(Helmet2, null, /* @__PURE__ */ React2.createElement("title", null, " Signup page ")), /* @__PURE__ */ React2.createElement("div", {
     className: "relative md:flex"
   }, /* @__PURE__ */ React2.createElement("div", {
     className: "md:w-1/2"

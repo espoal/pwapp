@@ -2,6 +2,7 @@
   "name": "main",
   "packageManager": "yarn@4.0.0-rc.14",
   "dependencies": {
+    "@libs/ssr": "workspace:^",
     "@pkgs/auth": "workspace:^",
     "@pkgs/dash": "workspace:^",
     "@vendors/react": "workspace:^"

@@ -24,7 +24,7 @@ var init_assets = __esm({
 });
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/auth/LoginPage.mjs
-import { React, Link } from "./vendors/server.mjs";
+import { React, Link, Helmet } from "./vendors/server.mjs";
 var LoginPage;
 var init_LoginPage = __esm({
   "pnp:/home/mamluk/Projects/pwapp/pkgs/auth/LoginPage.mjs"() {
@@ -32,7 +32,7 @@ var init_LoginPage = __esm({
     LoginPage = () => {
       return /* @__PURE__ */ React.createElement("main", {
         className: "bg-white"
-      }, /* @__PURE__ */ React.createElement("div", {
+      }, /* @__PURE__ */ React.createElement(Helmet, null, /* @__PURE__ */ React.createElement("title", null, " Login page ")), /* @__PURE__ */ React.createElement("div", {
         className: "relative md:flex"
       }, /* @__PURE__ */ React.createElement("div", {
         className: "md:w-1/2"
@@ -159,7 +159,7 @@ var init_LoginPage = __esm({
 });
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/auth/SignupPage.mjs
-import { React as React2, Link as Link2 } from "./vendors/server.mjs";
+import { React as React2, Link as Link2, Helmet as Helmet2 } from "./vendors/server.mjs";
 var SignupPage;
 var init_SignupPage = __esm({
   "pnp:/home/mamluk/Projects/pwapp/pkgs/auth/SignupPage.mjs"() {
@@ -167,7 +167,7 @@ var init_SignupPage = __esm({
     SignupPage = () => {
       return /* @__PURE__ */ React2.createElement("main", {
         className: "bg-white"
-      }, /* @__PURE__ */ React2.createElement("div", {
+      }, /* @__PURE__ */ React2.createElement(Helmet2, null, /* @__PURE__ */ React2.createElement("title", null, " Signup page ")), /* @__PURE__ */ React2.createElement("div", {
         className: "relative md:flex"
       }, /* @__PURE__ */ React2.createElement("div", {
         className: "md:w-1/2"
@@ -337,27 +337,23 @@ var init_Auth = __esm({
   }
 });
 
-// pnp:/home/mamluk/Projects/pwapp/main/server.mjs
-import { React as React20 } from "./vendors/server.mjs";
-import {
-  StaticRouter,
-  ReactDOMServer
-} from "./vendors/server.mjs";
-import { writeFile } from "node:fs/promises";
+// pnp:/home/mamluk/Projects/pwapp/main/ssr.mjs
+import { React as React21 } from "./vendors/server.mjs";
+import { StaticRouter } from "./vendors/server.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/main/index.html.mjs
 var indexHtml = ({
+  head = "",
   content = ""
 }) => `
   <!DOCTYPE html>
 <html lang="en">
 <head>
+    ${head}
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modern PWA</title>
     <link rel="stylesheet" href="/index.css">
-
 </head>
 <body class="font-inter antialiased bg-slate-100 text-slate-600">
 <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -375,13 +371,86 @@ var indexHtml = ({
   
   `;
 
+// pnp:/home/mamluk/Projects/pwapp/libs/ssr/src/pageRenderer.mjs
+import { writeFile } from "node:fs/promises";
+import { ReactDOMServer } from "./vendors/server.mjs";
+var decoder = new TextDecoder();
+var helmetParser = ({ helmet }) => {
+  let head = "";
+  console.log(helmet.title.toString());
+  for (const tag in helmet) {
+    head += helmet[tag].toString() + " ";
+  }
+  return head;
+};
+var pageRenderer = async ({ location, jsx: jsx2, html }) => {
+  const helmetContext = {};
+  const stream = await ReactDOMServer.renderToReadableStream(jsx2(location, helmetContext), {});
+  console.log({ location });
+  const head = helmetParser(helmetContext);
+  let content = "";
+  for await (const u8chunk of stream)
+    content += decoder.decode(u8chunk);
+  await writeFile(
+    `dist/public/ssr${location}/index.html`,
+    html({ content, head })
+  );
+};
+
+// pnp:/home/mamluk/Projects/pwapp/libs/ssr/src/firebaseFactory.mjs
+var baseConfig = {
+  "emulators": {
+    "hosting": {
+      "host": "0.0.0.0",
+      "port": 5e3
+    }
+  },
+  "hosting": {
+    "public": "dist/public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": []
+  }
+};
+var fireBaseFactory = ({ pages: pages2 }) => {
+  const rewrites = pages2.map(({ location, source = location }) => {
+    return {
+      source,
+      destination: `/ssr${location}/index.html`
+    };
+  });
+  rewrites.push({
+    "source": "**",
+    "destination": "/index.html"
+  });
+  baseConfig.hosting.rewrites = rewrites;
+  return baseConfig;
+};
+
+// pnp:/home/mamluk/Projects/pwapp/libs/ssr/src/ssrHelper.mjs
+import { writeFile as writeFile2 } from "node:fs/promises";
+var ssrHelper = async ({ pages: pages2, jsx: jsx2 }) => {
+  for (const page of pages2) {
+    await pageRenderer({ ...page, jsx: jsx2 });
+  }
+  const firebaseJson = fireBaseFactory({ pages: pages2 });
+  await writeFile2(
+    `./firebase.json`,
+    JSON.stringify(firebaseJson, null, 2)
+  );
+};
+
 // pnp:/home/mamluk/Projects/pwapp/main/App.mjs
 import {
-  React as React19,
-  useEffect as useEffect9,
+  React as React20,
+  useEffect as useEffect10,
   Routes as Routes2,
   Route as Route2,
-  useLocation as useLocation2
+  useLocation as useLocation2,
+  HelmetProvider
 } from "./vendors/server.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/auth/AuthRoutes.mjs
@@ -395,7 +464,10 @@ var AuthRoutes = () => /* @__PURE__ */ React4.createElement(Suspense, {
 }, /* @__PURE__ */ React4.createElement(Auth2, null));
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/dash/DashboardPage.mjs
-import { React as React18, useState as useState8 } from "./vendors/server.mjs";
+import { React as React19, useState as useState9, useEffect as useEffect9 } from "./vendors/server.mjs";
+
+// pnp:/home/mamluk/Projects/pwapp/pkgs/dash/DashboardPresentational.mjs
+import { React as React18, useState as useState8, Helmet as Helmet3 } from "./vendors/server.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/libs/components/sidebar/Sidebar.mjs
 import {
@@ -2676,118 +2748,92 @@ var LineChart = ({
 };
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/dash/userChart/UserChart.mjs
-var UserChart = () => {
-  const chartData = {
-    labels: [
-      "12-01-2020",
-      "01-01-2021",
-      "02-01-2021",
-      "03-01-2021",
-      "04-01-2021",
-      "05-01-2021",
-      "06-01-2021",
-      "07-01-2021",
-      "08-01-2021",
-      "09-01-2021",
-      "10-01-2021",
-      "11-01-2021",
-      "12-01-2021",
-      "01-01-2022",
-      "02-01-2022",
-      "03-01-2022",
-      "04-01-2022",
-      "05-01-2022",
-      "06-01-2022",
-      "07-01-2022",
-      "08-01-2022",
-      "09-01-2022",
-      "10-01-2022",
-      "11-01-2022",
-      "12-01-2022",
-      "01-01-2023"
-    ],
-    datasets: [
-      {
-        label: "Current",
-        data: [
-          5e3,
-          8700,
-          7500,
-          12e3,
-          11e3,
-          9500,
-          10500,
-          1e4,
-          15e3,
-          9e3,
-          1e4,
-          7e3,
-          22e3,
-          7200,
-          9800,
-          9e3,
-          1e4,
-          8e3,
-          15e3,
-          12e3,
-          11e3,
-          13e3,
-          11e3,
-          15e3,
-          17e3,
-          18e3
-        ],
-        fill: true,
-        backgroundColor: `rgba(${hexToRGB(resolvedConfig.theme.colors.blue[500])}, 0.08)`,
-        borderColor: resolvedConfig.theme.colors.indigo[500],
-        borderWidth: 2,
-        tension: 0,
-        pointRadius: 0,
-        pointHoverRadius: 3,
-        pointBackgroundColor: resolvedConfig.theme.colors.indigo[500],
-        clip: 20
-      },
-      {
-        label: "Previous",
-        data: [
-          8e3,
-          5e3,
-          6500,
-          5e3,
-          6500,
-          12e3,
-          8e3,
-          9e3,
-          8e3,
-          8e3,
-          12500,
-          1e4,
-          1e4,
-          12e3,
-          11e3,
-          16e3,
-          12e3,
-          1e4,
-          1e4,
-          14e3,
-          9e3,
-          1e4,
-          15e3,
-          12500,
-          14e3,
-          11e3
-        ],
-        borderColor: resolvedConfig.theme.colors.slate[300],
-        fill: false,
-        borderWidth: 2,
-        tension: 0,
-        pointRadius: 0,
-        pointHoverRadius: 3,
-        pointBackgroundColor: resolvedConfig.theme.colors.slate[300],
-        clip: 20
-      }
-    ]
-  };
+var chartDataFactory = ({ data }) => ({
+  labels: [
+    "12-01-2020",
+    "01-01-2021",
+    "02-01-2021",
+    "03-01-2021",
+    "04-01-2021",
+    "05-01-2021",
+    "06-01-2021",
+    "07-01-2021",
+    "08-01-2021",
+    "09-01-2021",
+    "10-01-2021",
+    "11-01-2021",
+    "12-01-2021",
+    "01-01-2022",
+    "02-01-2022",
+    "03-01-2022",
+    "04-01-2022",
+    "05-01-2022",
+    "06-01-2022",
+    "07-01-2022",
+    "08-01-2022",
+    "09-01-2022",
+    "10-01-2022",
+    "11-01-2022",
+    "12-01-2022",
+    "01-01-2023"
+  ],
+  datasets: [
+    {
+      label: "Current",
+      data,
+      fill: true,
+      backgroundColor: `rgba(${hexToRGB(resolvedConfig.theme.colors.blue[500])}, 0.08)`,
+      borderColor: resolvedConfig.theme.colors.indigo[500],
+      borderWidth: 2,
+      tension: 0,
+      pointRadius: 0,
+      pointHoverRadius: 3,
+      pointBackgroundColor: resolvedConfig.theme.colors.indigo[500],
+      clip: 20
+    },
+    {
+      label: "Previous",
+      data: [
+        8e3,
+        5e3,
+        6500,
+        5e3,
+        6500,
+        12e3,
+        8e3,
+        9e3,
+        8e3,
+        8e3,
+        12500,
+        1e4,
+        1e4,
+        12e3,
+        11e3,
+        16e3,
+        12e3,
+        1e4,
+        1e4,
+        14e3,
+        9e3,
+        1e4,
+        15e3,
+        12500,
+        14e3,
+        11e3
+      ],
+      borderColor: resolvedConfig.theme.colors.slate[300],
+      fill: false,
+      borderWidth: 2,
+      tension: 0,
+      pointRadius: 0,
+      pointHoverRadius: 3,
+      pointBackgroundColor: resolvedConfig.theme.colors.slate[300],
+      clip: 20
+    }
+  ]
+});
+var UserChart = ({ data }) => {
+  const chartData = chartDataFactory({ data });
   return /* @__PURE__ */ React17.createElement("div", {
     className: "flex flex-col col-span-full xl:col-span-8 bg-white shadow-lg rounded-sm border border-slate-200"
   }, /* @__PURE__ */ React17.createElement("header", {
@@ -2862,12 +2908,12 @@ var UserChart = () => {
   })));
 };
 
-// pnp:/home/mamluk/Projects/pwapp/pkgs/dash/DashboardPage.mjs
-var DashboardPage = () => {
+// pnp:/home/mamluk/Projects/pwapp/pkgs/dash/DashboardPresentational.mjs
+var DashboardPresentational = ({ data }) => {
   const [sidebarOpen, setSidebarOpen] = useState8(false);
   return /* @__PURE__ */ React18.createElement("div", {
     className: "flex h-screen overflow-hidden"
-  }, /* @__PURE__ */ React18.createElement(Sidebar, {
+  }, /* @__PURE__ */ React18.createElement(Helmet3, null, /* @__PURE__ */ React18.createElement("title", null, " Dashboard")), /* @__PURE__ */ React18.createElement(Sidebar, {
     sidebarOpen,
     setSidebarOpen
   }), /* @__PURE__ */ React18.createElement("div", {
@@ -2900,58 +2946,71 @@ var DashboardPage = () => {
     className: "hidden xs:block ml-2"
   }, "Add View")))), /* @__PURE__ */ React18.createElement("div", {
     className: "grid grid-cols-12 gap-6"
-  }, /* @__PURE__ */ React18.createElement(UserChart, null))))));
+  }, /* @__PURE__ */ React18.createElement(UserChart, {
+    ...{ data }
+  }))))));
+};
+
+// pnp:/home/mamluk/Projects/pwapp/pkgs/dash/DashboardPage.mjs
+var DashboardPage = () => {
+  const [data, setData] = useState9();
+  useEffect9(() => {
+    async function fetchData() {
+      const result = await fetch(
+        "/data/UserChart.json"
+      );
+      const fetchedData = await result.json();
+      setData(fetchedData);
+    }
+    fetchData();
+  }, []);
+  return /* @__PURE__ */ React19.createElement(DashboardPresentational, {
+    ...{ data }
+  });
 };
 
 // pnp:/home/mamluk/Projects/pwapp/main/App.mjs
-var App = () => {
+var App = ({ helmetContext = {} }) => {
   const location = useLocation2();
-  useEffect9(() => {
+  useEffect10(() => {
     document.querySelector("html").style.scrollBehavior = "auto";
     window.scroll({ top: 0 });
     document.querySelector("html").style.scrollBehavior = "";
   }, [location.pathname]);
-  return /* @__PURE__ */ React19.createElement(Routes2, null, /* @__PURE__ */ React19.createElement(Route2, {
+  return /* @__PURE__ */ React20.createElement(HelmetProvider, {
+    context: helmetContext
+  }, /* @__PURE__ */ React20.createElement(Routes2, null, /* @__PURE__ */ React20.createElement(Route2, {
     path: "/",
-    element: /* @__PURE__ */ React19.createElement("h1", null, "Hello world")
-  }), /* @__PURE__ */ React19.createElement(Route2, {
+    element: /* @__PURE__ */ React20.createElement("h1", null, "Hello world")
+  }), /* @__PURE__ */ React20.createElement(Route2, {
     path: "/auth/*",
-    element: /* @__PURE__ */ React19.createElement(AuthRoutes, null)
-  }), /* @__PURE__ */ React19.createElement(Route2, {
+    element: /* @__PURE__ */ React20.createElement(AuthRoutes, null)
+  }), /* @__PURE__ */ React20.createElement(Route2, {
     path: "/dash",
-    element: /* @__PURE__ */ React19.createElement(DashboardPage, null)
-  }), /* @__PURE__ */ React19.createElement(Route2, {
+    element: /* @__PURE__ */ React20.createElement(DashboardPage, null)
+  }), /* @__PURE__ */ React20.createElement(Route2, {
     path: "/dynamicdash",
-    element: /* @__PURE__ */ React19.createElement(DashboardPage, null)
-  }), /* @__PURE__ */ React19.createElement(Route2, {
+    element: /* @__PURE__ */ React20.createElement(DashboardPage, null)
+  }), /* @__PURE__ */ React20.createElement(Route2, {
     path: "*",
-    element: /* @__PURE__ */ React19.createElement("h1", null, "Not Found")
-  }));
+    element: /* @__PURE__ */ React20.createElement("h1", null, "Not Found")
+  })));
 };
 
-// pnp:/home/mamluk/Projects/pwapp/main/server.mjs
-var jsx = (location) => /* @__PURE__ */ React20.createElement(React20.StrictMode, null, /* @__PURE__ */ React20.createElement(StaticRouter, {
+// pnp:/home/mamluk/Projects/pwapp/main/ssr.mjs
+var jsx = (location, helmetContext) => /* @__PURE__ */ React21.createElement(React21.StrictMode, null, /* @__PURE__ */ React21.createElement(StaticRouter, {
   location
-}, /* @__PURE__ */ React20.createElement(App, null)));
-var decoder = new TextDecoder();
-var renderHelper = async ({ location }) => {
-  const stream = await ReactDOMServer.renderToReadableStream(jsx(location), {});
-  let content = "";
-  for await (const u8chunk of stream)
-    content += decoder.decode(u8chunk);
-  await writeFile(
-    `dist/public/ssr${location}/index.html`,
-    indexHtml({ content })
-  );
-};
+}, /* @__PURE__ */ React21.createElement(App, {
+  ...{ helmetContext }
+})));
 var pages = [
   {
-    location: "/dash"
+    location: "/dash",
+    html: indexHtml
   },
   {
-    location: "/auth/login"
+    location: "/auth/login",
+    html: indexHtml
   }
 ];
-for (const page of pages) {
-  await renderHelper(page);
-}
+await ssrHelper({ pages, jsx });

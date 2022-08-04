@@ -5,10 +5,8 @@ import { hexToRGB } from '@libs/tailwind/config'
 
 import { LineChart } from '@components/charts'
 
-
-export const UserChart = () => {
-
-  const chartData = {
+const chartDataFactory = ({ data }) =>
+  ({
     labels: [
       '12-01-2020', '01-01-2021', '02-01-2021',
       '03-01-2021', '04-01-2021', '05-01-2021',
@@ -24,12 +22,7 @@ export const UserChart = () => {
       // Indigo line
       {
         label: 'Current',
-        data: [
-          5000, 8700, 7500, 12000, 11000, 9500, 10500,
-          10000, 15000, 9000, 10000, 7000, 22000, 7200,
-          9800, 9000, 10000, 8000, 15000, 12000, 11000,
-          13000, 11000, 15000, 17000, 18000,
-        ],
+        data,
         fill: true,
         backgroundColor: `rgba(${hexToRGB(resolvedConfig.theme.colors.blue[500])}, 0.08)`,
         borderColor: resolvedConfig.theme.colors.indigo[500],
@@ -59,7 +52,12 @@ export const UserChart = () => {
         clip: 20,
       },
     ],
-  };
+  })
+
+
+export const UserChart = ({ data }) => {
+
+  const chartData = chartDataFactory({ data})
 
   return (
     <div className="flex flex-col col-span-full xl:col-span-8 bg-white shadow-lg rounded-sm border border-slate-200">

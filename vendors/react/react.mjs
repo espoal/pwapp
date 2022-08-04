@@ -19,7 +19,7 @@ export { hydrateRoot, createRoot } from 'react-dom/client'
 
 export * as PropTypes from 'prop-types'
 
-// export { Helmet, HelmetProvider } from 'react-helmet-async'
+export { Helmet, HelmetProvider } from 'react-helmet-async'
 
 /*export { StaticRouter } from 'react-router-dom/server.js'
 
