@@ -24,7 +24,7 @@ var init_assets = __esm({
 });
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/auth/LoginPage.mjs
-import { React, Link } from "/vendors/react.mjs";
+import { React, Link, Helmet } from "/vendors/react.mjs";
 var LoginPage;
 var init_LoginPage = __esm({
   "pnp:/home/mamluk/Projects/pwapp/pkgs/auth/LoginPage.mjs"() {
@@ -32,7 +32,7 @@ var init_LoginPage = __esm({
     LoginPage = () => {
       return /* @__PURE__ */ React.createElement("main", {
         className: "bg-white"
-      }, /* @__PURE__ */ React.createElement("div", {
+      }, /* @__PURE__ */ React.createElement(Helmet, null, /* @__PURE__ */ React.createElement("title", null, " Login page ")), /* @__PURE__ */ React.createElement("div", {
         className: "relative md:flex"
       }, /* @__PURE__ */ React.createElement("div", {
         className: "md:w-1/2"
@@ -159,7 +159,7 @@ var init_LoginPage = __esm({
 });
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/auth/SignupPage.mjs
-import { React as React2, Link as Link2 } from "/vendors/react.mjs";
+import { React as React2, Link as Link2, Helmet as Helmet2 } from "/vendors/react.mjs";
 var SignupPage;
 var init_SignupPage = __esm({
   "pnp:/home/mamluk/Projects/pwapp/pkgs/auth/SignupPage.mjs"() {
@@ -167,7 +167,7 @@ var init_SignupPage = __esm({
     SignupPage = () => {
       return /* @__PURE__ */ React2.createElement("main", {
         className: "bg-white"
-      }, /* @__PURE__ */ React2.createElement("div", {
+      }, /* @__PURE__ */ React2.createElement(Helmet2, null, /* @__PURE__ */ React2.createElement("title", null, " Signup page ")), /* @__PURE__ */ React2.createElement("div", {
         className: "relative md:flex"
       }, /* @__PURE__ */ React2.createElement("div", {
         className: "md:w-1/2"
@@ -339,18 +339,19 @@ var init_Auth = __esm({
 
 // pnp:/home/mamluk/Projects/pwapp/main/index.mjs
 import {
-  React as React20,
+  React as React21,
   createRoot,
   BrowserRouter
 } from "/vendors/react.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/main/App.mjs
 import {
-  React as React19,
-  useEffect as useEffect9,
+  React as React20,
+  useEffect as useEffect10,
   Routes as Routes2,
   Route as Route2,
-  useLocation as useLocation2
+  useLocation as useLocation2,
+  HelmetProvider
 } from "/vendors/react.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/auth/AuthRoutes.mjs
@@ -364,7 +365,10 @@ var AuthRoutes = () => /* @__PURE__ */ React4.createElement(Suspense, {
 }, /* @__PURE__ */ React4.createElement(Auth2, null));
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/dash/DashboardPage.mjs
-import { React as React18, useState as useState8 } from "/vendors/react.mjs";
+import { React as React19, useState as useState9, useEffect as useEffect9 } from "/vendors/react.mjs";
+
+// pnp:/home/mamluk/Projects/pwapp/pkgs/dash/DashboardPresentational.mjs
+import { React as React18, useState as useState8, Helmet as Helmet3 } from "/vendors/react.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/libs/components/sidebar/Sidebar.mjs
 import {
@@ -2645,118 +2649,92 @@ var LineChart = ({
 };
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/dash/userChart/UserChart.mjs
-var UserChart = () => {
-  const chartData = {
-    labels: [
-      "12-01-2020",
-      "01-01-2021",
-      "02-01-2021",
-      "03-01-2021",
-      "04-01-2021",
-      "05-01-2021",
-      "06-01-2021",
-      "07-01-2021",
-      "08-01-2021",
-      "09-01-2021",
-      "10-01-2021",
-      "11-01-2021",
-      "12-01-2021",
-      "01-01-2022",
-      "02-01-2022",
-      "03-01-2022",
-      "04-01-2022",
-      "05-01-2022",
-      "06-01-2022",
-      "07-01-2022",
-      "08-01-2022",
-      "09-01-2022",
-      "10-01-2022",
-      "11-01-2022",
-      "12-01-2022",
-      "01-01-2023"
-    ],
-    datasets: [
-      {
-        label: "Current",
-        data: [
-          5e3,
-          8700,
-          7500,
-          12e3,
-          11e3,
-          9500,
-          10500,
-          1e4,
-          15e3,
-          9e3,
-          1e4,
-          7e3,
-          22e3,
-          7200,
-          9800,
-          9e3,
-          1e4,
-          8e3,
-          15e3,
-          12e3,
-          11e3,
-          13e3,
-          11e3,
-          15e3,
-          17e3,
-          18e3
-        ],
-        fill: true,
-        backgroundColor: `rgba(${hexToRGB(resolvedConfig.theme.colors.blue[500])}, 0.08)`,
-        borderColor: resolvedConfig.theme.colors.indigo[500],
-        borderWidth: 2,
-        tension: 0,
-        pointRadius: 0,
-        pointHoverRadius: 3,
-        pointBackgroundColor: resolvedConfig.theme.colors.indigo[500],
-        clip: 20
-      },
-      {
-        label: "Previous",
-        data: [
-          8e3,
-          5e3,
-          6500,
-          5e3,
-          6500,
-          12e3,
-          8e3,
-          9e3,
-          8e3,
-          8e3,
-          12500,
-          1e4,
-          1e4,
-          12e3,
-          11e3,
-          16e3,
-          12e3,
-          1e4,
-          1e4,
-          14e3,
-          9e3,
-          1e4,
-          15e3,
-          12500,
-          14e3,
-          11e3
-        ],
-        borderColor: resolvedConfig.theme.colors.slate[300],
-        fill: false,
-        borderWidth: 2,
-        tension: 0,
-        pointRadius: 0,
-        pointHoverRadius: 3,
-        pointBackgroundColor: resolvedConfig.theme.colors.slate[300],
-        clip: 20
-      }
-    ]
-  };
+var chartDataFactory = ({ data }) => ({
+  labels: [
+    "12-01-2020",
+    "01-01-2021",
+    "02-01-2021",
+    "03-01-2021",
+    "04-01-2021",
+    "05-01-2021",
+    "06-01-2021",
+    "07-01-2021",
+    "08-01-2021",
+    "09-01-2021",
+    "10-01-2021",
+    "11-01-2021",
+    "12-01-2021",
+    "01-01-2022",
+    "02-01-2022",
+    "03-01-2022",
+    "04-01-2022",
+    "05-01-2022",
+    "06-01-2022",
+    "07-01-2022",
+    "08-01-2022",
+    "09-01-2022",
+    "10-01-2022",
+    "11-01-2022",
+    "12-01-2022",
+    "01-01-2023"
+  ],
+  datasets: [
+    {
+      label: "Current",
+      data,
+      fill: true,
+      backgroundColor: `rgba(${hexToRGB(resolvedConfig.theme.colors.blue[500])}, 0.08)`,
+      borderColor: resolvedConfig.theme.colors.indigo[500],
+      borderWidth: 2,
+      tension: 0,
+      pointRadius: 0,
+      pointHoverRadius: 3,
+      pointBackgroundColor: resolvedConfig.theme.colors.indigo[500],
+      clip: 20
+    },
+    {
+      label: "Previous",
+      data: [
+        8e3,
+        5e3,
+        6500,
+        5e3,
+        6500,
+        12e3,
+        8e3,
+        9e3,
+        8e3,
+        8e3,
+        12500,
+        1e4,
+        1e4,
+        12e3,
+        11e3,
+        16e3,
+        12e3,
+        1e4,
+        1e4,
+        14e3,
+        9e3,
+        1e4,
+        15e3,
+        12500,
+        14e3,
+        11e3
+      ],
+      borderColor: resolvedConfig.theme.colors.slate[300],
+      fill: false,
+      borderWidth: 2,
+      tension: 0,
+      pointRadius: 0,
+      pointHoverRadius: 3,
+      pointBackgroundColor: resolvedConfig.theme.colors.slate[300],
+      clip: 20
+    }
+  ]
+});
+var UserChart = ({ data }) => {
+  const chartData = chartDataFactory({ data });
   return /* @__PURE__ */ React17.createElement("div", {
     className: "flex flex-col col-span-full xl:col-span-8 bg-white shadow-lg rounded-sm border border-slate-200"
   }, /* @__PURE__ */ React17.createElement("header", {
@@ -2831,12 +2809,12 @@ var UserChart = () => {
   })));
 };
 
-// pnp:/home/mamluk/Projects/pwapp/pkgs/dash/DashboardPage.mjs
-var DashboardPage = () => {
+// pnp:/home/mamluk/Projects/pwapp/pkgs/dash/DashboardPresentational.mjs
+var DashboardPresentational = ({ data }) => {
   const [sidebarOpen, setSidebarOpen] = useState8(false);
   return /* @__PURE__ */ React18.createElement("div", {
     className: "flex h-screen overflow-hidden"
-  }, /* @__PURE__ */ React18.createElement(Sidebar, {
+  }, /* @__PURE__ */ React18.createElement(Helmet3, null, /* @__PURE__ */ React18.createElement("title", null, " Dashboard")), /* @__PURE__ */ React18.createElement(Sidebar, {
     sidebarOpen,
     setSidebarOpen
   }), /* @__PURE__ */ React18.createElement("div", {
@@ -2869,37 +2847,59 @@ var DashboardPage = () => {
     className: "hidden xs:block ml-2"
   }, "Add View")))), /* @__PURE__ */ React18.createElement("div", {
     className: "grid grid-cols-12 gap-6"
-  }, /* @__PURE__ */ React18.createElement(UserChart, null))))));
+  }, /* @__PURE__ */ React18.createElement(UserChart, {
+    ...{ data }
+  }))))));
+};
+
+// pnp:/home/mamluk/Projects/pwapp/pkgs/dash/DashboardPage.mjs
+var DashboardPage = () => {
+  const [data, setData] = useState9();
+  useEffect9(() => {
+    async function fetchData() {
+      const result = await fetch(
+        "/data/UserChart.json"
+      );
+      const fetchedData = await result.json();
+      setData(fetchedData);
+    }
+    fetchData();
+  }, []);
+  return /* @__PURE__ */ React19.createElement(DashboardPresentational, {
+    ...{ data }
+  });
 };
 
 // pnp:/home/mamluk/Projects/pwapp/main/App.mjs
-var App = () => {
+var App = ({ helmetContext = {} }) => {
   const location = useLocation2();
-  useEffect9(() => {
+  useEffect10(() => {
     document.querySelector("html").style.scrollBehavior = "auto";
     window.scroll({ top: 0 });
     document.querySelector("html").style.scrollBehavior = "";
   }, [location.pathname]);
-  return /* @__PURE__ */ React19.createElement(Routes2, null, /* @__PURE__ */ React19.createElement(Route2, {
+  return /* @__PURE__ */ React20.createElement(HelmetProvider, {
+    context: helmetContext
+  }, /* @__PURE__ */ React20.createElement(Routes2, null, /* @__PURE__ */ React20.createElement(Route2, {
     path: "/",
-    element: /* @__PURE__ */ React19.createElement("h1", null, "Hello world")
-  }), /* @__PURE__ */ React19.createElement(Route2, {
+    element: /* @__PURE__ */ React20.createElement("h1", null, "Hello world")
+  }), /* @__PURE__ */ React20.createElement(Route2, {
     path: "/auth/*",
-    element: /* @__PURE__ */ React19.createElement(AuthRoutes, null)
-  }), /* @__PURE__ */ React19.createElement(Route2, {
+    element: /* @__PURE__ */ React20.createElement(AuthRoutes, null)
+  }), /* @__PURE__ */ React20.createElement(Route2, {
     path: "/dash",
-    element: /* @__PURE__ */ React19.createElement(DashboardPage, null)
-  }), /* @__PURE__ */ React19.createElement(Route2, {
+    element: /* @__PURE__ */ React20.createElement(DashboardPage, null)
+  }), /* @__PURE__ */ React20.createElement(Route2, {
     path: "/dynamicdash",
-    element: /* @__PURE__ */ React19.createElement(DashboardPage, null)
-  }), /* @__PURE__ */ React19.createElement(Route2, {
+    element: /* @__PURE__ */ React20.createElement(DashboardPage, null)
+  }), /* @__PURE__ */ React20.createElement(Route2, {
     path: "*",
-    element: /* @__PURE__ */ React19.createElement("h1", null, "Not Found")
-  }));
+    element: /* @__PURE__ */ React20.createElement("h1", null, "Not Found")
+  })));
 };
 
 // pnp:/home/mamluk/Projects/pwapp/main/index.mjs
 var container = document.getElementById("root");
 createRoot(container).render(
-  /* @__PURE__ */ React20.createElement(React20.StrictMode, null, /* @__PURE__ */ React20.createElement(BrowserRouter, null, /* @__PURE__ */ React20.createElement(App, null)))
+  /* @__PURE__ */ React21.createElement(React21.StrictMode, null, /* @__PURE__ */ React21.createElement(BrowserRouter, null, /* @__PURE__ */ React21.createElement(App, null)))
 );

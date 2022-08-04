@@ -4,10 +4,14 @@ import { tailwindPlugin } from '@libs/tailwind'
 import { vendorsResolver } from './vendorsResolver.mjs'
 
 const loader = {
-  '.sh': 'file',
-  '.png': 'file',
-  '.jpg': 'file',
   '.mjs': 'jsx'
+}
+
+let ignoreCss = {
+  name: 'empty-css-imports',
+  setup(build) {
+    build.onLoad({ filter: /\.css$/ }, () => ({ contents: '' }))
+  },
 }
 
 const baseOptions = {
@@ -27,7 +31,7 @@ const baseOptions = {
 }
 
 const serverOptions = {
-  plugins: [ vendorsResolver({ ssr: true }), tailwindPlugin, pnpPlugin()],
+  plugins: [ vendorsResolver({ ssr: true }), ignoreCss, pnpPlugin()],
   platform: 'node'
 
 }

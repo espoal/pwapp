@@ -4,7 +4,7 @@
     "serve": "firebase emulators:start",
     "build": "node build.mjs",
     "watch": "node build.mjs",
-    "ssr": "node dist/public/server.mjs"
+    "ssr": "node dist/public/ssr.mjs"
   },
   "workspaces": [
     "dist",

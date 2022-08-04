@@ -1,10 +1,14 @@
-import { React, Link } from '@vendors/react'
+import { React, Link, Helmet } from '@vendors/react'
 import { AuthImage, AuthDecoration } from '@libs/assets'
 
 
 export const LoginPage = () => {
   return (
     <main className="bg-white">
+
+      <Helmet>
+        <title> Login page </title>
+      </Helmet>
 
       <div className="relative md:flex">
 

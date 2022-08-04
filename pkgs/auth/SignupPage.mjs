@@ -1,10 +1,14 @@
-import { React, Link } from '@vendors/react'
+import { React, Link, Helmet } from '@vendors/react'
 import { AuthImage, AuthDecoration } from '@libs/assets'
 
 
 export const SignupPage = () => {
   return (
     <main className="bg-white">
+
+      <Helmet>
+        <title> Signup page </title>
+      </Helmet>
 
       <div className="relative md:flex">
 
