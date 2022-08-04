@@ -2,6 +2,14 @@
 
 A moder PWA, batteries included and magic excluded.
 
+## Start
+
+- Install deps with `yarn`
+- Build with `yarn build`
+- Serve with `yarn serve`
+
+The server will be available at `http://localhost:5000`
+
 ## Design principles
 
 - Users first

@@ -40,14 +40,19 @@ export const buildHelper = async ({
   entryPoints,
   external,
   outDir = '',
-  ssr = false
+  ssr = false,
+  isProd
 }) => {
 
   const options = {
     ...baseOptions,
     entryPoints,
     external,
-    outdir: 'dist/public/' + outDir
+    outdir: 'dist/public/' + outDir,
+  }
+
+  if (isProd) {
+    options.minify = true
   }
 
   if (ssr)
