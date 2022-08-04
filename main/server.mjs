@@ -2,7 +2,7 @@ import {
   React, StaticRouter, ReactDOMServer
 } from '@vendors/react'
 
-import { App } from 'main/App.mjs'
+import { App } from './App.mjs'
 
 const jsx = (location) =>
   (<React.StrictMode>
@@ -16,10 +16,7 @@ const stream = await ReactDOMServer.renderToReadableStream(jsx('/dash'), {})
 
 console.log({ stream })
 
+const decoder = new TextDecoder()
 
-/*const pass = new PassThrough({ encoding: 'utf8'})
-
-login.pipe(pass)*/
-
-for await (const chunk of stream)
-  console.log({ chunk })
+for await (const u8chunk of stream)
+  console.log({ chunk: decoder.decode(u8chunk) })

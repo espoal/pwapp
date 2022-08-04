@@ -26,6 +26,6 @@ buildHelper({
 })
 
 buildHelper({
-  entryPoints: ['pkgs/ssr/server.mjs'],
+  entryPoints: ['main/server.mjs'],
   ssr: true
 })

@@ -334,13 +334,12 @@ var init_Auth = __esm({
   }
 });
 
-// pnp:/home/mamluk/Projects/pwapp/pkgs/ssr/server.mjs
+// pnp:/home/mamluk/Projects/pwapp/main/server.mjs
 import {
   React as React20,
   StaticRouter,
   ReactDOMServer
 } from "./vendors/react.mjs";
-import { PassThrough } from "node:stream";
 
 // pnp:/home/mamluk/Projects/pwapp/main/App.mjs
 import {
@@ -9091,11 +9090,12 @@ var App = () => {
   }));
 };
 
-// pnp:/home/mamluk/Projects/pwapp/pkgs/ssr/server.mjs
+// pnp:/home/mamluk/Projects/pwapp/main/server.mjs
 var jsx = (location) => /* @__PURE__ */ React20.createElement(React20.StrictMode, null, /* @__PURE__ */ React20.createElement(StaticRouter, {
   location
 }, /* @__PURE__ */ React20.createElement(App, null)));
 var stream = await ReactDOMServer.renderToReadableStream(jsx("/dash"), {});
 console.log({ stream });
-for await (const chunk of stream)
-  console.log({ chunk });
+var decoder = new TextDecoder();
+for await (const u8chunk of stream)
+  console.log({ chunk: decoder.decode(u8chunk) });
