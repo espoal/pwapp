@@ -20,6 +20,7 @@ export const App = () => {
       <Route path="/" element={<h1>Hello world</h1>} />
       <Route path="/auth/*" element={<AuthRoutes />}/>
       <Route path="/dash" element={<DashboardPage />} />
+      <Route path="/dynamicdash" element={<DashboardPage />} />
       <Route path="*" element={<h1>Not Found</h1>} />
     </Routes>
   )

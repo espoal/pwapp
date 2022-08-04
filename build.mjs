@@ -1,9 +1,25 @@
 import { buildHelper } from '@espoal/build'
 
+
+buildHelper({
+  entryPoints: ['vendors/misc/resolvedConfig.mjs'],
+  outDir: 'vendors/'
+})
+
+// React
+
 buildHelper({
   entryPoints: ['vendors/react/react.mjs'],
   outDir: 'vendors/'
 })
+
+buildHelper({
+  entryPoints: ['vendors/react/server.mjs'],
+  outDir: 'vendors/',
+  // ssr: true
+})
+
+// Charts
 
 buildHelper({
   entryPoints: ['vendors/charts/charts.mjs'],

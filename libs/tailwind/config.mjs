@@ -1,9 +1,9 @@
-import { resolvedConfig } from './resolvedConfig.mjs'
+/*import { resolvedConfig } from './resolvedConfig.mjs'
 
 export const tailwindConfig = () => {
   // Tailwind config
   return resolvedConfig
-}
+}*/
 
 export const hexToRGB = (h) => {
   let r = 0;

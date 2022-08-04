@@ -1,6 +1,7 @@
 import { React } from '@vendors/react'
+import { resolvedConfig } from '@vendors/misc/resolvedConfig.mjs'
 
-import { tailwindConfig, hexToRGB } from '@libs/tailwind/config'
+import { hexToRGB } from '@libs/tailwind/config'
 
 import { LineChart } from '@components/charts'
 
@@ -30,13 +31,13 @@ export const UserChart = () => {
           13000, 11000, 15000, 17000, 18000,
         ],
         fill: true,
-        backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.blue[500])}, 0.08)`,
-        borderColor: tailwindConfig().theme.colors.indigo[500],
+        backgroundColor: `rgba(${hexToRGB(resolvedConfig.theme.colors.blue[500])}, 0.08)`,
+        borderColor: resolvedConfig.theme.colors.indigo[500],
         borderWidth: 2,
         tension: 0,
         pointRadius: 0,
         pointHoverRadius: 3,
-        pointBackgroundColor: tailwindConfig().theme.colors.indigo[500],
+        pointBackgroundColor: resolvedConfig.theme.colors.indigo[500],
         clip: 20,
       },
       // Gray line
@@ -48,13 +49,13 @@ export const UserChart = () => {
           11000, 16000, 12000, 10000, 10000, 14000, 9000,
           10000, 15000, 12500, 14000, 11000,
         ],
-        borderColor: tailwindConfig().theme.colors.slate[300],
+        borderColor: resolvedConfig.theme.colors.slate[300],
         fill: false,
         borderWidth: 2,
         tension: 0,
         pointRadius: 0,
         pointHoverRadius: 3,
-        pointBackgroundColor: tailwindConfig().theme.colors.slate[300],
+        pointBackgroundColor: resolvedConfig.theme.colors.slate[300],
         clip: 20,
       },
     ],

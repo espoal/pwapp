@@ -283,6 +283,9 @@ var Auth = () => {
     path: "login",
     element: /* @__PURE__ */ React3.createElement(LoginPage, null)
   }), /* @__PURE__ */ React3.createElement(Route, {
+    path: "dynamiclogin",
+    element: /* @__PURE__ */ React3.createElement(LoginPage, null)
+  }), /* @__PURE__ */ React3.createElement(Route, {
     path: "signup",
     element: /* @__PURE__ */ React3.createElement(SignupPage, null)
   }), /* @__PURE__ */ React3.createElement(Route, {

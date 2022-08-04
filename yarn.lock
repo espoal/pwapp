@@ -177,6 +177,7 @@ __metadata:
     "@components/charts": "workspace:^"
     "@layouts/dashboard": "workspace:^"
     "@libs/tailwind": "workspace:^"
+    "@vendors/misc": "workspace:^"
     "@vendors/react": "workspace:^"
   languageName: unknown
   linkType: soft
@@ -213,6 +214,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@vendors/misc@workspace:vendors/misc"
   dependencies:
+    "@libs/tailwind": "workspace:^"
     flatpickr: "npm:^4.6.13"
   languageName: unknown
   linkType: soft
@@ -1284,7 +1286,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"main@workspace:^, main@workspace:main":
+"main@workspace:main":
   version: 0.0.0-use.local
   resolution: "main@workspace:main"
   dependencies:
@@ -2013,19 +2015,6 @@ __metadata:
   checksum: 4496d29f371909dbc27dfb302f31cadc70b6f1591b2b433337daf923fac30e9632523e169494b40d06b53228166a577875a3610bce3412de8bb600152f748a9c
   languageName: node
   linkType: hard
-
-"ssr@workspace:pkgs/ssr":
-  version: 0.0.0-use.local
-  resolution: "ssr@workspace:pkgs/ssr"
-  dependencies:
-    "@espoal/build": "workspace:^"
-    "@vendors/react": "workspace:^"
-    main: "workspace:^"
-    react: "npm:^18.2.0"
-    react-dom: "npm:^18.2.0"
-    react-router-dom: "npm:^6.3.0"
-  languageName: unknown
-  linkType: soft
 
 "ssri@npm:^9.0.0":
   version: 9.0.1

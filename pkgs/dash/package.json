@@ -6,6 +6,7 @@
     "@components/charts": "workspace:^",
     "@layouts/dashboard": "workspace:^",
     "@libs/tailwind": "workspace:^",
+    "@vendors/misc": "workspace:^",
     "@vendors/react": "workspace:^"
   }
 }

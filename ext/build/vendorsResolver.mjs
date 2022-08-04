@@ -7,7 +7,19 @@ export const vendorsResolver = ({currentVersion = '0.0.1', ssr = false}) => ({
       const pkg = args.path.split('/').pop()
       // console.log({args, pkg})
       // return { path: `/vendors/${pkg}${currentVersion}.mjs`, external: true }
-      const path = `${ssr ? '.' : ''}/vendors/${pkg}.mjs`
+
+      let path
+
+      if (ssr) {
+        path = `./vendors/${pkg}.mjs`
+          .replace(`.mjs.mjs`, `.mjs`)
+          .replace('react', 'server')
+
+      } else {
+        path = `/vendors/${pkg}.mjs`
+          .replace(`.mjs.mjs`, `.mjs`)
+      }
+
       return { path, external: true }
 
     })
