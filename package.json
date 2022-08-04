@@ -2,7 +2,9 @@
   "name": "pwa",
   "scripts": {
     "serve": "firebase emulators:start",
-    "build": "node build.mjs"
+    "build": "node build.mjs",
+    "watch": "node build.mjs",
+    "ssr": "node dist/public/server.mjs"
   },
   "workspaces": [
     "dist",

@@ -1,4 +1,4 @@
-import { React, Route } from '@vendors/react'
+import { React, Suspense } from '@vendors/react'
 //import { Auth } from './Auth.mjs'
 
 const Auth = React.lazy(async () => {
@@ -10,9 +10,9 @@ const Auth = React.lazy(async () => {
 })
 
 export const AuthRoutes = () =>
-  (<React.Suspense fallback={<>Loading ...</>}>
+  (<Suspense fallback={<>Loading ...</>}>
     <Auth />
-  </React.Suspense>)
+  </Suspense>)
 
 /*export const AuthRoutes = () =>
   (

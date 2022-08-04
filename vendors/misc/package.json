@@ -3,6 +3,7 @@
   "main": "misc.mjs",
   "packageManager": "yarn@4.0.0-rc.14",
   "dependencies": {
+    "@libs/tailwind": "workspace:^",
     "flatpickr": "^4.6.13"
   }
 }
