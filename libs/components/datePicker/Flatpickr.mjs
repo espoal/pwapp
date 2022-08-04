@@ -1,6 +1,7 @@
 import { React, Component } from '@vendors/react'
 import { flatpickr as flat } from '@vendors/misc'
-import { PropTypes } from '@vendors/react'
+import { PropTypes as Props } from '@vendors/react'
+const PropTypes = Props.default
 
 import './styles.css'
 
@@ -16,6 +17,7 @@ const hooks = [
   'onValueUpdate',
   'onDayCreate'
 ]
+
 const hookPropType = PropTypes.oneOfType([
   PropTypes.func,
   PropTypes.arrayOf(PropTypes.func)

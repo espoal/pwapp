@@ -24,7 +24,7 @@ var init_assets = __esm({
 });
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/auth/LoginPage.mjs
-import { React, Link } from "/vendors/react.mjs";
+import { React, Link } from "./vendors/react.mjs";
 var LoginPage;
 var init_LoginPage = __esm({
   "pnp:/home/mamluk/Projects/pwapp/pkgs/auth/LoginPage.mjs"() {
@@ -159,7 +159,7 @@ var init_LoginPage = __esm({
 });
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/auth/SignupPage.mjs
-import { React as React2, Link as Link2 } from "/vendors/react.mjs";
+import { React as React2, Link as Link2 } from "./vendors/react.mjs";
 var SignupPage;
 var init_SignupPage = __esm({
   "pnp:/home/mamluk/Projects/pwapp/pkgs/auth/SignupPage.mjs"() {
@@ -310,7 +310,7 @@ var Auth_exports = {};
 __export(Auth_exports, {
   Auth: () => Auth
 });
-import { React as React3, Routes, Route, Navigate } from "/vendors/react.mjs";
+import { React as React3, Routes, Route, Navigate } from "./vendors/react.mjs";
 var Auth;
 var init_Auth = __esm({
   "pnp:/home/mamluk/Projects/pwapp/pkgs/auth/Auth.mjs"() {
@@ -334,12 +334,13 @@ var init_Auth = __esm({
   }
 });
 
-// pnp:/home/mamluk/Projects/pwapp/main/index.mjs
+// pnp:/home/mamluk/Projects/pwapp/pkgs/ssr/server.mjs
 import {
   React as React20,
-  createRoot,
-  BrowserRouter
-} from "/vendors/react.mjs";
+  StaticRouter,
+  ReactDOMServer
+} from "./vendors/react.mjs";
+import { PassThrough } from "node:stream";
 
 // pnp:/home/mamluk/Projects/pwapp/main/App.mjs
 import {
@@ -348,10 +349,10 @@ import {
   Routes as Routes2,
   Route as Route3,
   useLocation as useLocation2
-} from "/vendors/react.mjs";
+} from "./vendors/react.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/auth/AuthRoutes.mjs
-import { React as React4, Route as Route2 } from "/vendors/react.mjs";
+import { React as React4, Route as Route2 } from "./vendors/react.mjs";
 var Auth2 = React4.lazy(async () => {
   const { Auth: Auth3 } = await Promise.resolve().then(() => (init_Auth(), Auth_exports));
   return { default: Auth3 };
@@ -361,7 +362,7 @@ var AuthRoutes = () => /* @__PURE__ */ React4.createElement(React4.Suspense, {
 }, /* @__PURE__ */ React4.createElement(Auth2, null));
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/dash/DashboardPage.mjs
-import { React as React18, useState as useState8 } from "/vendors/react.mjs";
+import { React as React18, useState as useState8 } from "./vendors/react.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/libs/components/sidebar/Sidebar.mjs
 import {
@@ -371,10 +372,10 @@ import {
   useRef,
   NavLink,
   useLocation
-} from "/vendors/react.mjs";
+} from "./vendors/react.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/libs/components/sidebar/SidebarLinkGroup.mjs
-import { React as React5, useState, useNavigate } from "/vendors/react.mjs";
+import { React as React5, useState, useNavigate } from "./vendors/react.mjs";
 var SidebarLinkGroup = ({
   children,
   activecondition
@@ -1543,7 +1544,7 @@ var Sidebar = ({
 };
 
 // pnp:/home/mamluk/Projects/pwapp/libs/components/header/Header.mjs
-import { React as React12, useState as useState6 } from "/vendors/react.mjs";
+import { React as React12, useState as useState6 } from "./vendors/react.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/libs/components/header/components/SearchModal.mjs
 import {
@@ -1551,7 +1552,7 @@ import {
   useRef as useRef3,
   useEffect as useEffect3,
   Link as Link3
-} from "/vendors/react.mjs";
+} from "./vendors/react.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/libs/components/transition/Transition.mjs
 import {
@@ -1560,7 +1561,7 @@ import {
   useEffect as useEffect2,
   useContext,
   ReactCSSTransition
-} from "/vendors/react.mjs";
+} from "./vendors/react.mjs";
 var TransitionContext = React7.createContext({
   parent: {}
 });
@@ -1844,7 +1845,7 @@ import {
   useRef as useRef4,
   useEffect as useEffect4,
   Link as Link4
-} from "/vendors/react.mjs";
+} from "./vendors/react.mjs";
 var DropdownNotifications = ({
   align
 }) => {
@@ -1954,7 +1955,7 @@ import {
   useRef as useRef5,
   useEffect as useEffect5,
   Link as Link5
-} from "/vendors/react.mjs";
+} from "./vendors/react.mjs";
 init_assets();
 var DropdownProfile = ({
   align
@@ -2042,7 +2043,7 @@ import {
   useRef as useRef6,
   useEffect as useEffect6,
   Link as Link6
-} from "/vendors/react.mjs";
+} from "./vendors/react.mjs";
 var DropdownHelp = ({
   align
 }) => {
@@ -2219,7 +2220,7 @@ import {
   useState as useState7,
   useRef as useRef7,
   useEffect as useEffect7
-} from "/vendors/react.mjs";
+} from "./vendors/react.mjs";
 var FilterButton = ({
   align
 }) => {
@@ -2345,12 +2346,12 @@ var FilterButton = ({
 };
 
 // pnp:/home/mamluk/Projects/pwapp/libs/components/datePicker/DatePicker.mjs
-import { React as React15 } from "/vendors/react.mjs";
+import { React as React15 } from "./vendors/react.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/libs/components/datePicker/Flatpickr.mjs
-import { React as React14, Component } from "/vendors/react.mjs";
-import { flatpickr as flat } from "/vendors/misc.mjs";
-import { PropTypes as Props } from "/vendors/react.mjs";
+import { React as React14, Component } from "./vendors/react.mjs";
+import { flatpickr as flat } from "./vendors/misc.mjs";
+import { PropTypes as Props } from "./vendors/react.mjs";
 var PropTypes = Props.default;
 var flatpickr = flat.default;
 var hooks = [
@@ -2532,7 +2533,7 @@ var DatePicker = ({
 };
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/dash/userChart/UserChart.mjs
-import { React as React17 } from "/vendors/react.mjs";
+import { React as React17 } from "./vendors/react.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/libs/tailwind/resolvedConfig.mjs
 var resolvedConfig = {
@@ -8751,7 +8752,7 @@ var hexToRGB = (h) => {
 };
 
 // pnp:/home/mamluk/Projects/pwapp/libs/components/charts/LineChart.mjs
-import { React as React16, useRef as useRef8, useEffect as useEffect8 } from "/vendors/react.mjs";
+import { React as React16, useRef as useRef8, useEffect as useEffect8 } from "./vendors/react.mjs";
 import {
   Chart,
   LineController,
@@ -8761,7 +8762,7 @@ import {
   LinearScale,
   TimeScale,
   Tooltip
-} from "/vendors/charts.mjs";
+} from "./vendors/charts.mjs";
 var formatThousands = (value) => Intl.NumberFormat("en-US", {
   maximumSignificantDigits: 3,
   notation: "compact"
@@ -9090,8 +9091,11 @@ var App = () => {
   }));
 };
 
-// pnp:/home/mamluk/Projects/pwapp/main/index.mjs
-var container = document.getElementById("root");
-createRoot(container).render(
-  /* @__PURE__ */ React20.createElement(React20.StrictMode, null, /* @__PURE__ */ React20.createElement(BrowserRouter, null, /* @__PURE__ */ React20.createElement(App, null)))
-);
+// pnp:/home/mamluk/Projects/pwapp/pkgs/ssr/server.mjs
+var jsx = (location) => /* @__PURE__ */ React20.createElement(React20.StrictMode, null, /* @__PURE__ */ React20.createElement(StaticRouter, {
+  location
+}, /* @__PURE__ */ React20.createElement(App, null)));
+var stream = await ReactDOMServer.renderToReadableStream(jsx("/dash"), {});
+console.log({ stream });
+for await (const chunk of stream)
+  console.log({ chunk });

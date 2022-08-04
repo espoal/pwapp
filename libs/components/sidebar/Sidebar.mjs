@@ -16,7 +16,7 @@ export const Sidebar = ({
   const trigger = useRef(null);
   const sidebar = useRef(null);
 
-  const storedSidebarExpanded = localStorage.getItem('sidebar-expanded') ?? true
+  const storedSidebarExpanded = true //localStorage.getItem('sidebar-expanded') ?? true
   const [sidebarExpanded, setSidebarExpanded] = useState(storedSidebarExpanded);
 
   // close on click outside
@@ -43,7 +43,7 @@ export const Sidebar = ({
   });
 
   useEffect(() => {
-    localStorage.setItem('sidebar-expanded', sidebarExpanded);
+    //localStorage.setItem('sidebar-expanded', sidebarExpanded);
     if (sidebarExpanded) {
       document.querySelector('body').classList.add('sidebar-expanded');
     } else {

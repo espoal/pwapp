@@ -24,3 +24,8 @@ buildHelper({
   entryPoints: ['pkgs/auth/Auth.mjs'],
   external: ['@vendors/react']
 })
+
+buildHelper({
+  entryPoints: ['pkgs/ssr/server.mjs'],
+  ssr: true
+})
