@@ -1,0 +1,8 @@
+{
+  "name": "@libs/critical",
+  "main": "index.mjs",
+  "packageManager": "yarn@4.0.0-rc.14",
+  "dependencies": {
+    "critical": "^4.0.1"
+  }
+}

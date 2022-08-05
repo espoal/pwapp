@@ -18,6 +18,10 @@
         "destination": "/ssr/dash/index.html"
       },
       {
+        "source": "/critical",
+        "destination": "/ssr/critical/index.html"
+      },
+      {
         "source": "/auth/login",
         "destination": "/ssr/auth/login/index.html"
       },
