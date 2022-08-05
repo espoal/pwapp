@@ -2,7 +2,7 @@ export * as React from 'react'
 
 export {
   useEffect, useState, useRef, useContext,
-  Component, Suspense
+  Component, Suspense, lazy
 } from 'react'
 
 export {

@@ -1,11 +1,13 @@
-import { React, Suspense } from '@vendors/react'
+import { React, lazy, Suspense } from '@vendors/react'
 //import { Auth } from './Auth.mjs'
 
-const Auth = React.lazy(async () => {
+const Auth = lazy(async () => {
 
-  const { Auth } = await import('./Auth.mjs')
+  /*const { Auth } = await import('./Auth.mjs')
 
-  return { default: Auth }
+  return { default: Auth }*/
+
+  return import('./Auth.mjs')
 
 })
 

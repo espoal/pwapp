@@ -13,7 +13,10 @@ export const indexHtml = ({
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/index.css">
     <link rel="manifest" href="/app.webmanifest">
-
+    <link rel="preload" href="/react.mjs" as="script">
+    <link rel="preload" href="/charts.mjs" as="script">
+    <link rel="preload" href="/misc.mjs" as="script">
+    <link rel="preload" href="/resolvedConfig.mjs" as="script">
 </head>
 <body class="font-inter antialiased bg-slate-100 text-slate-600">
 <noscript>You need to enable JavaScript to run this app.</noscript>

@@ -21,22 +21,20 @@ export const pageRenderer = async ({ location, jsx, html }) => {
   const helmetContext = {}
 
   const stream =
-    await ReactDOMServer.renderToString(jsx(location, helmetContext), {})
+    await ReactDOMServer.renderToReadableStream(jsx(location, helmetContext), {})
 
   console.log({ location })
   const head = helmetParser(helmetContext)
 
-  //let content = ''
+  let content = ''
 
-  //for await (const u8chunk of stream)
-  //  content += decoder.decode(u8chunk)
+  for await (const u8chunk of stream)
+    content += decoder.decode(u8chunk)
 
   // console.log({ cwd: process.cwd() })
 
-  console.log({ stream, head })
-
   await writeFile(
     `dist/public/ssr${location}/index.html`,
-    html({ stream, head }))
+    html({ content, head }))
 
 }
