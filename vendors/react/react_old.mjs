@@ -2,7 +2,7 @@ export * as React from 'react'
 
 export {
   useEffect, useState, useRef, useContext,
-  Component, Suspense, lazy
+  Component, Suspense
 } from 'react'
 
 export {
@@ -14,7 +14,7 @@ export {
 
 export { CSSTransition as ReactCSSTransition } from 'react-transition-group'
 
-export { hydrateRoot, createRoot } from 'preact/compat/client'
+export { hydrateRoot, createRoot } from 'react-dom/client'
 
 
 export * as PropTypes from 'prop-types'

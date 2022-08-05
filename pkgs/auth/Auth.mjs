@@ -2,7 +2,7 @@ import { React, Routes, Route, Navigate } from '@vendors/react'
 import { LoginPage } from './LoginPage'
 import { SignupPage } from './SignupPage'
 
-export const Auth = () => {
+const Auth = () => {
 
   return (
     <Routes>
@@ -14,3 +14,5 @@ export const Auth = () => {
   )
 
 }
+
+export default Auth

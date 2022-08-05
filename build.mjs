@@ -56,6 +56,14 @@ await buildHelper({
   isProd
 })
 
+// Sevice Worker
+
+await buildHelper({
+  name: '@pkgs/serviceWorker',
+  entryPoints: ['pkgs/serviceWorker/sw.mjs'],
+  isProd
+})
+
 // SSR
 
 await buildHelper({
