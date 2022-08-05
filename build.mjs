@@ -9,9 +9,10 @@ if ( argv.includes('prod') ) {
   isProd = true
 }
 
-console.log({ isProd })
+console.log(`Starting ${isProd ? 'production' : 'dev' } build`)
 
-buildHelper({
+await buildHelper({
+  name: '@vendors/react',
   entryPoints: [
     'vendors/react/react.mjs',
     'vendors/react/server.mjs',
@@ -22,7 +23,8 @@ buildHelper({
 
 // Charts
 
-buildHelper({
+await buildHelper({
+  name: '@vendors/charts',
   entryPoints: ['vendors/charts/charts.mjs'],
   outDir: 'vendors/',
   isProd
@@ -30,7 +32,8 @@ buildHelper({
 
 // Misc
 
-buildHelper({
+await buildHelper({
+  name: '@vendors/misc',
   entryPoints: [
     'vendors/misc/misc.mjs',
     'vendors/misc/resolvedConfig.mjs'
@@ -41,20 +44,31 @@ buildHelper({
 
 // App
 
-buildHelper({
+await buildHelper({
+  name: 'main/client',
   entryPoints: ['main/index.mjs'],
   isProd
 })
 
-buildHelper({
+await buildHelper({
+  name: '@pkgs/auth',
   entryPoints: ['pkgs/auth/Auth.mjs'],
   isProd
 })
 
 // SSR
 
-buildHelper({
+await buildHelper({
+  name: 'main/ssr',
   entryPoints: ['main/ssr.mjs'],
   ssr: true,
   isProd
 })
+
+if (isProd && false) {
+  // TODO: handle critical css
+  console.log('Build done. Starting SSR.')
+  await import('./dist/public/ssr.mjs')
+}
+
+

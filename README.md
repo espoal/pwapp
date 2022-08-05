@@ -30,11 +30,10 @@ The server will be available at `http://localhost:5000`
 ## TODO:
 
 - Service worker
-- Critical CSS
+- Critical CSS (bug)
 - Auth context
 - SEO
 - Typescript
 - Tests
 - Lint
 - GA4
-- Build watch

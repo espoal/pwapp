@@ -1,7 +1,9 @@
 import esbuild from 'esbuild'
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp'
 import { tailwindPlugin } from '@libs/tailwind'
-import { vendorsResolver } from './vendorsResolver.mjs'
+import { vendorsResolver } from './src/vendorsResolver.mjs'
+import { watchHelper } from './src/watchHelper.mjs'
+import { timeNow } from './src/timeNow.mjs'
 
 const loader = {
   '.mjs': 'jsx'
@@ -37,6 +39,7 @@ const serverOptions = {
 }
 
 export const buildHelper = async ({
+  name,
   entryPoints,
   external,
   outDir = '',
@@ -53,11 +56,18 @@ export const buildHelper = async ({
 
   if (isProd) {
     options.minify = true
+  } else {
+    options.watch = watchHelper(name)
   }
+
+
 
   if (ssr)
     await esbuild.build({ ...options, ...serverOptions })
   else
     await esbuild.build(options)
+
+  console.log('Build successful at time: ' + timeNow() + ' for: ' + name)
+
 
 }

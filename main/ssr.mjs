@@ -24,7 +24,7 @@ const pages = [
   }
 ]
 
-await ssrHelper({ pages, jsx})
+await ssrHelper({ pages, jsx })
 
 
 
