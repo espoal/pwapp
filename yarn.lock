@@ -248,6 +248,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@pkgs/serviceWorker@workspace:pkgs/serviceWorker":
+  version: 0.0.0-use.local
+  resolution: "@pkgs/serviceWorker@workspace:pkgs/serviceWorker"
+  languageName: unknown
+  linkType: soft
+
 "@sideway/address@npm:^4.1.3":
   version: 4.1.4
   resolution: "@sideway/address@npm:4.1.4"

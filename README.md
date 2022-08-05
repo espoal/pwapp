@@ -37,3 +37,4 @@ The server will be available at `http://localhost:5000`
 - Tests
 - Lint
 - GA4
+- Benchmarks
