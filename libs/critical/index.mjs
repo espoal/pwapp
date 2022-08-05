@@ -10,9 +10,7 @@ critical.generate({
   inline: true,
 
   // Your base directory
-  base: 'dist/',
-
-
+  base: '/home/mamluk/Projects/pwapp/dist/public/',
 
   // HTML source file
   src: '/home/mamluk/Projects/pwapp/dist/public/ssr/dash/index.html',
@@ -28,18 +26,16 @@ critical.generate({
 
   // Output results to file
   target: {
-    css: 'critical.css',
-    html: 'index-critical.html',
+    css: 'ssr/critical/critical.css',
+    html: 'ssr/critical/index.html',
     uncritical: 'uncritical.css',
+  },
+
+  penthouse: {
+    forceInclude: [/^\.flatpickr-*/, /^\.form-*/]
+
   },
 
   // Extract inlined styles from referenced stylesheets
   extract: true,
-
-  // ignore CSS rules
-  ignore: {
-    atrule: ['@font-face'],
-    rule: [/some-regexp/],
-    decl: (node, value) => /big-image\.png/.test(value),
-  },
 });

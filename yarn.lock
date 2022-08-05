@@ -150,6 +150,7 @@ __metadata:
   resolution: "@libs/critical@workspace:libs/critical"
   dependencies:
     critical: "npm:^4.0.1"
+    penthouse: "npm:^2.3.3"
   languageName: unknown
   linkType: soft
 
@@ -3957,7 +3958,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"penthouse@npm:^2.3.2":
+"penthouse@npm:^2.3.2, penthouse@npm:^2.3.3":
   version: 2.3.3
   resolution: "penthouse@npm:2.3.3"
   dependencies:
