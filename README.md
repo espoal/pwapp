@@ -30,14 +30,11 @@ The server will be available at `http://localhost:5000`
 ## TODO:
 
 - Service worker
-- SSR
-- - Exclude CSS
-- - Generate firebase.json
+- Critical CSS
 - Auth context
-- Fetching
-- prod env
 - SEO
 - Typescript
 - Tests
 - Lint
 - GA4
+- Build watch
