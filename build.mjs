@@ -2,7 +2,7 @@ import { buildHelper } from '@espoal/build'
 import process, {argv} from 'node:process'
 
 // React
-
+const versioning = true
 let isProd = false
 if ( argv.includes('prod') ) {
   process.env.NODE_ENV = 'production'
@@ -18,7 +18,8 @@ await buildHelper({
     'vendors/react/server.mjs',
   ],
   outDir: 'vendors/',
-  isProd
+  isProd,
+  versioning
 })
 
 // Charts
@@ -27,7 +28,8 @@ await buildHelper({
   name: '@vendors/charts',
   entryPoints: ['vendors/charts/charts.mjs'],
   outDir: 'vendors/',
-  isProd
+  isProd,
+  versioning
 })
 
 // Misc
@@ -39,7 +41,8 @@ await buildHelper({
     'vendors/misc/resolvedConfig.mjs'
   ],
   outDir: 'vendors/',
-  isProd
+  isProd,
+  versioning
 })
 
 // App
@@ -60,7 +63,7 @@ await buildHelper({
 
 await buildHelper({
   name: '@pkgs/serviceWorker',
-  entryPoints: ['pkgs/serviceWorker/sw.mjs'],
+  entryPoints: ['pkgs/serviceWorker/sw.mjs', 'pkgs/serviceWorker/register.mjs'],
   isProd
 })
 

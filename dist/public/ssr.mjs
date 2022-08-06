@@ -24,7 +24,7 @@ var init_assets = __esm({
 });
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/auth/LoginPage.mjs
-import { React, Link, Helmet } from "./vendors/server.mjs";
+import { React, Link, Helmet } from "./vendors/server-0.0.1.mjs";
 var LoginPage;
 var init_LoginPage = __esm({
   "pnp:/home/mamluk/Projects/pwapp/pkgs/auth/LoginPage.mjs"() {
@@ -159,7 +159,7 @@ var init_LoginPage = __esm({
 });
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/auth/SignupPage.mjs
-import { React as React2, Link as Link2, Helmet as Helmet2 } from "./vendors/server.mjs";
+import { React as React2, Link as Link2, Helmet as Helmet2 } from "./vendors/server-0.0.1.mjs";
 var SignupPage;
 var init_SignupPage = __esm({
   "pnp:/home/mamluk/Projects/pwapp/pkgs/auth/SignupPage.mjs"() {
@@ -310,7 +310,7 @@ var Auth_exports = {};
 __export(Auth_exports, {
   Auth: () => Auth
 });
-import { React as React3, Routes, Route, Navigate } from "./vendors/server.mjs";
+import { React as React3, Routes, Route, Navigate } from "./vendors/server-0.0.1.mjs";
 var Auth;
 var init_Auth = __esm({
   "pnp:/home/mamluk/Projects/pwapp/pkgs/auth/Auth.mjs"() {
@@ -338,8 +338,8 @@ var init_Auth = __esm({
 });
 
 // pnp:/home/mamluk/Projects/pwapp/main/ssr.mjs
-import { React as React21 } from "./vendors/server.mjs";
-import { StaticRouter } from "./vendors/server.mjs";
+import { React as React21 } from "./vendors/server-0.0.1.mjs";
+import { StaticRouter } from "./vendors/server-0.0.1.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/main/index.html.mjs
 var indexHtml = ({
@@ -354,17 +354,15 @@ var indexHtml = ({
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/index.css">
+    <link rel="manifest" href="/app.webmanifest">
+
 </head>
 <body class="font-inter antialiased bg-slate-100 text-slate-600">
 <noscript>You need to enable JavaScript to run this app.</noscript>
-<script>
-  if ('serviceWorker' in navigator)
-    navigator.serviceWorker.register("/sw.mjs", {
-      type: 'module'
-    })
-<\/script>
 <div id="root">${content}</div>
 <script type="module" src="/index.mjs"><\/script>
+<script type="module" src="/register.mjs"><\/script>
+
 </body>
 </html>
   
@@ -372,7 +370,7 @@ var indexHtml = ({
 
 // pnp:/home/mamluk/Projects/pwapp/libs/ssr/src/pageRenderer.mjs
 import { writeFile } from "node:fs/promises";
-import { ReactDOMServer } from "./vendors/server.mjs";
+import { ReactDOMServer } from "./vendors/server-0.0.1.mjs";
 var decoder = new TextDecoder();
 var helmetParser = ({ helmet }) => {
   let head = "";
@@ -450,10 +448,10 @@ import {
   Route as Route2,
   useLocation as useLocation2,
   HelmetProvider
-} from "./vendors/server.mjs";
+} from "./vendors/server-0.0.1.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/auth/AuthRoutes.mjs
-import { React as React4, Suspense } from "./vendors/server.mjs";
+import { React as React4, Suspense } from "./vendors/server-0.0.1.mjs";
 var Auth2 = React4.lazy(async () => {
   const { Auth: Auth3 } = await Promise.resolve().then(() => (init_Auth(), Auth_exports));
   return { default: Auth3 };
@@ -463,10 +461,10 @@ var AuthRoutes = () => /* @__PURE__ */ React4.createElement(Suspense, {
 }, /* @__PURE__ */ React4.createElement(Auth2, null));
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/dash/DashboardPage.mjs
-import { React as React19, useState as useState9, useEffect as useEffect9 } from "./vendors/server.mjs";
+import { React as React19, useState as useState9, useEffect as useEffect9 } from "./vendors/server-0.0.1.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/dash/DashboardPresentational.mjs
-import { React as React18, useState as useState8, Helmet as Helmet3 } from "./vendors/server.mjs";
+import { React as React18, useState as useState8, Helmet as Helmet3 } from "./vendors/server-0.0.1.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/libs/components/sidebar/Sidebar.mjs
 import {
@@ -476,10 +474,10 @@ import {
   useRef,
   NavLink,
   useLocation
-} from "./vendors/server.mjs";
+} from "./vendors/server-0.0.1.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/libs/components/sidebar/SidebarLinkGroup.mjs
-import { React as React5, useState, useNavigate } from "./vendors/server.mjs";
+import { React as React5, useState, useNavigate } from "./vendors/server-0.0.1.mjs";
 var SidebarLinkGroup = ({
   children,
   activecondition
@@ -1648,7 +1646,7 @@ var Sidebar = ({
 };
 
 // pnp:/home/mamluk/Projects/pwapp/libs/components/header/Header.mjs
-import { React as React12, useState as useState6 } from "./vendors/server.mjs";
+import { React as React12, useState as useState6 } from "./vendors/server-0.0.1.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/libs/components/header/components/SearchModal.mjs
 import {
@@ -1656,7 +1654,7 @@ import {
   useRef as useRef3,
   useEffect as useEffect3,
   Link as Link3
-} from "./vendors/server.mjs";
+} from "./vendors/server-0.0.1.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/libs/components/transition/Transition.mjs
 import {
@@ -1665,7 +1663,7 @@ import {
   useEffect as useEffect2,
   useContext,
   ReactCSSTransition
-} from "./vendors/server.mjs";
+} from "./vendors/server-0.0.1.mjs";
 var TransitionContext = React7.createContext({
   parent: {}
 });
@@ -1949,7 +1947,7 @@ import {
   useRef as useRef4,
   useEffect as useEffect4,
   Link as Link4
-} from "./vendors/server.mjs";
+} from "./vendors/server-0.0.1.mjs";
 var DropdownNotifications = ({
   align
 }) => {
@@ -2059,7 +2057,7 @@ import {
   useRef as useRef5,
   useEffect as useEffect5,
   Link as Link5
-} from "./vendors/server.mjs";
+} from "./vendors/server-0.0.1.mjs";
 init_assets();
 var DropdownProfile = ({
   align
@@ -2147,7 +2145,7 @@ import {
   useRef as useRef6,
   useEffect as useEffect6,
   Link as Link6
-} from "./vendors/server.mjs";
+} from "./vendors/server-0.0.1.mjs";
 var DropdownHelp = ({
   align
 }) => {
@@ -2324,7 +2322,7 @@ import {
   useState as useState7,
   useRef as useRef7,
   useEffect as useEffect7
-} from "./vendors/server.mjs";
+} from "./vendors/server-0.0.1.mjs";
 var FilterButton = ({
   align
 }) => {
@@ -2450,12 +2448,12 @@ var FilterButton = ({
 };
 
 // pnp:/home/mamluk/Projects/pwapp/libs/components/datePicker/DatePicker.mjs
-import { React as React15 } from "./vendors/server.mjs";
+import { React as React15 } from "./vendors/server-0.0.1.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/libs/components/datePicker/Flatpickr.mjs
-import { React as React14, Component } from "./vendors/server.mjs";
-import { flatpickr as flat } from "./vendors/misc.mjs";
-import { PropTypes as Props } from "./vendors/server.mjs";
+import { React as React14, Component } from "./vendors/server-0.0.1.mjs";
+import { flatpickr as flat } from "./vendors/misc-0.0.1.mjs";
+import { PropTypes as Props } from "./vendors/server-0.0.1.mjs";
 var PropTypes = Props.default;
 var flatpickr = flat.default;
 var hooks = [
@@ -2637,8 +2635,8 @@ var DatePicker = ({
 };
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/dash/userChart/UserChart.mjs
-import { React as React17 } from "./vendors/server.mjs";
-import { resolvedConfig } from "./vendors/resolvedConfig.mjs";
+import { React as React17 } from "./vendors/server-0.0.1.mjs";
+import { resolvedConfig } from "./vendors/resolvedConfig-0.0.1.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/libs/tailwind/config.mjs
 var hexToRGB = (h) => {
@@ -2658,7 +2656,7 @@ var hexToRGB = (h) => {
 };
 
 // pnp:/home/mamluk/Projects/pwapp/libs/components/charts/LineChart.mjs
-import { React as React16, useRef as useRef8, useEffect as useEffect8 } from "./vendors/server.mjs";
+import { React as React16, useRef as useRef8, useEffect as useEffect8 } from "./vendors/server-0.0.1.mjs";
 import {
   Chart,
   LineController,
@@ -2668,7 +2666,7 @@ import {
   LinearScale,
   TimeScale,
   Tooltip
-} from "./vendors/charts.mjs";
+} from "./vendors/charts-0.0.1.mjs";
 var formatThousands = (value) => Intl.NumberFormat("en-US", {
   maximumSignificantDigits: 3,
   notation: "compact"

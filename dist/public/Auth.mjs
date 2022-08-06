@@ -1,8 +1,8 @@
 // pnp:/home/mamluk/Projects/pwapp/pkgs/auth/Auth.mjs
-import { React as React3, Routes, Route, Navigate } from "/vendors/react.mjs";
+import { React as React3, Routes, Route, Navigate } from "/vendors/react-0.0.1.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/auth/LoginPage.mjs
-import { React, Link, Helmet } from "/vendors/react.mjs";
+import { React, Link, Helmet } from "/vendors/react-0.0.1.mjs";
 
 // pnp:/home/mamluk/Projects/pwapp/libs/assets/index.mjs
 var AuthImage = "/assets/images/auth-image.jpg";
@@ -137,7 +137,7 @@ var LoginPage = () => {
 };
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/auth/SignupPage.mjs
-import { React as React2, Link as Link2, Helmet as Helmet2 } from "/vendors/react.mjs";
+import { React as React2, Link as Link2, Helmet as Helmet2 } from "/vendors/react-0.0.1.mjs";
 var SignupPage = () => {
   return /* @__PURE__ */ React2.createElement("main", {
     className: "bg-white"

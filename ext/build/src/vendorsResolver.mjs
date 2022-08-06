@@ -1,41 +1,42 @@
+const external = true
 
 export const vendorsResolver = ({currentVersion = '0.0.1', ssr = false}) => ({
   name: 'example',
   setup(build) {
     // Mark all paths starting with 'http://' or 'https://' as external
     build.onResolve({ filter: /^@vendors/ }, args => {
-      const pkg = args.path.split('/').pop()
+      const pkg = args.path
+        .split('/')
+        .pop()
+        .replace('.mjs','')
       // console.log({args, pkg})
       // return { path: `/vendors/${pkg}${currentVersion}.mjs`, external: true }
 
       let path
 
       if (ssr) {
-        path = `./vendors/${pkg}.mjs`
-          .replace(`.mjs.mjs`, `.mjs`)
+        path = `./vendors/${pkg}-${currentVersion}.mjs`
           .replace('react', 'server')
-
       } else {
-        path = `/vendors/${pkg}.mjs`
-          .replace(`.mjs.mjs`, `.mjs`)
+        path = `/vendors/${pkg}-${currentVersion}.mjs`
       }
 
-      return { path, external: true }
+      return { path, external }
 
     })
     // Mark all paths starting with 'http://' or 'https://' as external
     build.onResolve({ filter: /^https?:\/\// }, args => {
       // console.log({args})
-      return { path: args.path, external: true }
+      return { path: args.path, external }
     })
 
     // Mark all paths starting with 'data:' as external
     build.onResolve({ filter: /^data:/ }, args => {
       // console.log({args})
-      return { path: args.path, external: true }
+      return { path: args.path, external }
     })
 
-    build.onResolve({ filter: /.html/ }, async args => {
+    /*build.onResolve({ filter: /.html/ }, async args => {
       if (args.pluginData) return // Ignore this if we called ourselves
       // TODO: dont treeshake files
 
@@ -47,6 +48,6 @@ export const vendorsResolver = ({currentVersion = '0.0.1', ssr = false}) => ({
 
       result.sideEffects = true
       return result
-    })
+    })*/
   },
 })

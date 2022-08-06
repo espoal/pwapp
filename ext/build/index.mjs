@@ -5,6 +5,8 @@ import { vendorsResolver } from './src/vendorsResolver.mjs'
 import { watchHelper } from './src/watchHelper.mjs'
 import { timeNow } from './src/timeNow.mjs'
 
+const currentVersion = '0.0.1'
+
 const loader = {
   '.mjs': 'jsx'
 }
@@ -17,9 +19,8 @@ let ignoreCss = {
 }
 
 const baseOptions = {
-  entryPoints: [ 'No entrypoint specified' ],
   outdir: 'dist/public/',
-  plugins: [ vendorsResolver({}), tailwindPlugin, pnpPlugin()],
+  plugins: [ vendorsResolver({ currentVersion }), tailwindPlugin, pnpPlugin()],
   bundle: true,
   splitting: false,
   format: 'esm',
@@ -40,11 +41,12 @@ const serverOptions = {
 
 export const buildHelper = async ({
   name,
-  entryPoints,
-  external,
+  entryPoints = [ 'No entrypoint specified' ],
+  external = [],
   outDir = '',
   ssr = false,
-  isProd
+  isProd = false,
+  versioning = false
 }) => {
 
   const options = {
@@ -58,6 +60,10 @@ export const buildHelper = async ({
     options.minify = true
   } else {
     options.watch = watchHelper(name)
+  }
+
+  if (versioning) {
+    options.entryNames = `[dir]/[name]-${currentVersion}`
   }
 
 
