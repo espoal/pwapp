@@ -2,7 +2,7 @@ import { cachedList } from './cache.mjs'
 
 function isSuccessful(response) {
   return response &&
-    response.status === 200 &&
+    (response.status === 200 || response.status === 304) &&
     response.type === 'basic';
 }
 
@@ -19,7 +19,7 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(function (cache) {
-        return cache.addAll(cachedList);
+        return cache.addAll(cachedList)
       })
   )
 })
@@ -28,7 +28,7 @@ self.addEventListener('activate', event => {
 })
 
 self.addEventListener('fetch', event => {
-  console.log(`URL requested: ${event.request.url}`)
+  //console.log(`URL requested: ${event.request.url}`)
   event.respondWith(
     caches.match(event.request)
       .then(function (response) {

@@ -34,7 +34,7 @@ var cachedList = [
 
 // pnp:/home/mamluk/Projects/pwapp/pkgs/serviceWorker/sw.mjs
 function isSuccessful(response) {
-  return response && response.status === 200 && response.type === "basic";
+  return response && (response.status === 200 || response.status === 304) && response.type === "basic";
 }
 var CACHE_NAME = "cache-v1";
 self.addEventListener("message", (event) => {
@@ -54,7 +54,6 @@ self.addEventListener("activate", (event) => {
   console.log("Service worker activated");
 });
 self.addEventListener("fetch", (event) => {
-  console.log(`URL requested: ${event.request.url}`);
   event.respondWith(
     caches.match(event.request).then(function(response) {
       if (response) {
