@@ -1,4 +1,7 @@
 export const cachedList = [
+  //"/"
+]
+export const cachedList2 = [
   "/",
   "/dash",
   "/Auth.mjs",

@@ -20,7 +20,6 @@ if ('serviceWorker' in navigator) {
 
     // detect Service Worker update available and wait for it to become installed
     registration.addEventListener('updatefound', () => {
-      console.log('Update found!!')
       if (registration.installing) {
         // wait until the new Service worker is actually installed (ready to take over)
         registration.installing.addEventListener('statechange', () => {
@@ -30,7 +29,7 @@ if ('serviceWorker' in navigator) {
               invokeServiceWorkerUpdateFlow(registration)
             } else {
               // otherwise it's the first install, nothing to do
-              console.log('Service Worker initialized for the first time')
+              //console.log('Service Worker initialized for the first time')
             }
           }
         })
