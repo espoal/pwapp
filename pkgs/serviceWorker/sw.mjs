@@ -31,6 +31,7 @@ const respondFromCache = async (event) => {
 
   const cache = await caches.open(CACHE_NAME)
   const cacheMatch = await cache.match(request)
+  // TODO: handle API
   if ( cacheMatch ) {
     return cacheMatch
   } else {
