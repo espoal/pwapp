@@ -30,6 +30,9 @@ The server will be available at `http://localhost:5000`
 ## TODO:
 
 - Service worker
+- - Lazy caching (remove cached files)
+- - Why / or /dash is not cached?
+- - Verify updates
 - Critical CSS (bug)
 - Auth context
 - SEO
@@ -37,3 +40,4 @@ The server will be available at `http://localhost:5000`
 - Tests
 - Lint
 - GA4
+- Benchmarks

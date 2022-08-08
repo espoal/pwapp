@@ -89,6 +89,10 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:pkgs/notFound"\
     },\
     {\
+      "name": "@pkgs/serviceWorker",\
+      "reference": "workspace:pkgs/serviceWorker"\
+    },\
+    {\
       "name": "@vendors/charts",\
       "reference": "workspace:vendors/charts"\
     },\
@@ -118,6 +122,7 @@ const RAW_RUNTIME_STATE =
     ["@libs/tailwind", ["workspace:libs/tailwind"]],\
     ["@pkgs/auth", ["workspace:pkgs/auth"]],\
     ["@pkgs/dash", ["workspace:pkgs/dash"]],\
+    ["@pkgs/serviceWorker", ["workspace:pkgs/serviceWorker"]],\
     ["@vendors/charts", ["workspace:vendors/charts"]],\
     ["@vendors/misc", ["workspace:vendors/misc"]],\
     ["@vendors/react", ["workspace:vendors/react"]],\
@@ -424,6 +429,15 @@ const RAW_RUNTIME_STATE =
           ["@libs/tailwind", "workspace:libs/tailwind"],\
           ["@vendors/misc", "workspace:vendors/misc"],\
           ["@vendors/react", "workspace:vendors/react"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@pkgs/serviceWorker", [\
+      ["workspace:pkgs/serviceWorker", {\
+        "packageLocation": "./pkgs/serviceWorker/",\
+        "packageDependencies": [\
+          ["@pkgs/serviceWorker", "workspace:pkgs/serviceWorker"]\
         ],\
         "linkType": "SOFT"\
       }]\
