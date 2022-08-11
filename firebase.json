@@ -22,6 +22,10 @@
         "destination": "/ssr/auth/login/index.html"
       },
       {
+        "source": "/critical",
+        "destination": "/ssr/critical/index.html"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
